@@ -34,3 +34,18 @@ For example:
 ```
 feature/#1-add-get-contacts-endpoint
 ```
+
+## How to run for development
+
+#### Backend
+1. In STS, import project as a maven project.
+2. Run backend on a Tomcat server. Verify on `localhost:8080`. 
+
+Note: The server will have to be restarted after every change to the backend code.
+
+#### Front end.
+1. Open a terminal in the `angular` directory. 
+2. Run `npm install` to install dependencies.
+3. Run `npm start` to start the front end server. `Verify on localhost:4200`. 
+
+Note: any changes to the `angular` directory will automatically be compiled and reflected on the browser. Useful for development!
