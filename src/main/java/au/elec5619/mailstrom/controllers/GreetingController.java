@@ -1,4 +1,4 @@
-package au.elec5619.coolapp69.controllers;
+package au.elec5619.mailstrom.controllers;
 
 import java.util.concurrent.atomic.AtomicLong;
 import org.springframework.stereotype.Controller;
@@ -7,7 +7,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import au.elec5619.coolapp69.models.Greeting;
+import au.elec5619.mailstrom.models.Greeting;
 
 @Controller
 public class GreetingController {

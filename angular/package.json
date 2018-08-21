@@ -4,11 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve  --proxy-config proxy.conf.json",
-    "build": "ng build --base-href /coolapp69/angular/",
+    "build": "ng build --base-href /mailstrom/angular/",
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "run:dev": "ng b --base-href /coolapp69/angular/"
+    "run:dev": "ng b --base-href /mailstrom/angular/"
   },
   "private": true,
   "dependencies": {

@@ -1,4 +1,4 @@
-package au.elec5619.coolapp69.models;
+package au.elec5619.mailstrom.models;
 
 public class Greeting {
     private final long id;

@@ -11,7 +11,7 @@
 	</appender>
 	
 	<!-- Application Loggers -->
-	<logger name="au.elec5619.coolapp69">
+	<logger name="au.elec5619.mailstrom">
 		<level value="info" />
 	</logger>
 	

@@ -1,4 +1,4 @@
-package au.elec5619.coolapp69.controllers;
+package au.elec5619.mailstrom.controllers;
 
 import java.text.DateFormat;
 import java.util.Date;
