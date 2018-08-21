@@ -1,4 +1,4 @@
-# CoolApp69
+# Mailstrom
 ELEC5619 Group Project
 
 **Always create a feature branch when you are working on the code base. Create a pull request when you are done with your task to merge with master**
