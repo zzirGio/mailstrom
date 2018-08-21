@@ -3,8 +3,8 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>au.elec5619</groupId>
-	<artifactId>coolapp69</artifactId>
-	<name>coolapp69</name>
+	<artifactId>mailstrom</artifactId>
+	<name>mailstrom</name>
 	<packaging>war</packaging>
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>

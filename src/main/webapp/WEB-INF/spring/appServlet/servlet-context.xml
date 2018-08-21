@@ -21,7 +21,7 @@
 		<beans:property name="suffix" value=".jsp" />
 	</beans:bean>
 	
-	<context:component-scan base-package="au.elec5619.coolapp69" />
+	<context:component-scan base-package="au.elec5619.mailstrom" />
 	
 	
 	
