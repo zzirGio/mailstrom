@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Greeting, GreetingService } from '../services/greeting.service'
+import { Greeting, GreetingService } from '@services/greeting.service'
 
 
 @Component({
