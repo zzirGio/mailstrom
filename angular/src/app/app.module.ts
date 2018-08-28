@@ -3,7 +3,7 @@ import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
 import { AppComponent } from './app.component';
-import { GreetingComponent } from './greeting/greeting.component';
+import { GreetingComponent } from '@components/greeting/greeting.component';
 
 @NgModule({
   declarations: [
