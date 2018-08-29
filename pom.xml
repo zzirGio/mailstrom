@@ -9,7 +9,7 @@
 	<version>1.0.0-BUILD-SNAPSHOT</version>
 	<properties>
 		<java-version>1.6</java-version>
-		<org.springframework-version>3.1.1.RELEASE</org.springframework-version>
+		<org.springframework-version>4.3.8.RELEASE</org.springframework-version>
 		<org.aspectj-version>1.6.10</org.aspectj-version>
 		<org.slf4j-version>1.6.6</org.slf4j-version>
 	</properties>
@@ -31,6 +31,11 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-webmvc</artifactId>
 			<version>${org.springframework-version}</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-orm</artifactId>
+			<version>3.1.0.RELEASE</version>
 		</dependency>
 				
 		<!-- AspectJ -->
@@ -121,6 +126,69 @@
 			<artifactId>jackson-mapper-asl</artifactId>
 			<version>1.9.13</version>
 		</dependency>
+		<!-- Hibernate -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-core</artifactId>
+			<version>3.5.6-Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>3.5.6-Final</version>
+		</dependency>
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-annotations</artifactId>
+			<version>3.5.6-Final</version>
+		</dependency>
+
+		<!-- MYSQL Database -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>5.1.46</version>
+		</dependency>
+
+		<dependency>
+			<groupId>commons-dbcp</groupId>
+			<artifactId>commons-dbcp</artifactId>
+			<version>1.4</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>4.3.1.Final</version>
+		</dependency>
+		<dependency>
+			<groupId>javax.validation</groupId>
+			<artifactId>validation-api</artifactId>
+			<version>1.0.0.GA</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-config</artifactId>
+			<version>5.0.7.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-core</artifactId>
+			<version>5.0.7.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.security</groupId>
+			<artifactId>spring-security-web</artifactId>
+			<version>5.0.7.RELEASE</version>
+		</dependency>
+		
+		<!-- https://mvnrepository.com/artifact/org.apache.commons/commons-lang3 -->
+		<dependency>
+		    <groupId>org.apache.commons</groupId>
+		    <artifactId>commons-lang3</artifactId>
+		    <version>3.0</version>
+		</dependency>
+		
 	</dependencies>
     <build>
         <plugins>
@@ -162,66 +230,7 @@
 		      <groupId>org.apache.maven.plugins</groupId>
 		      <artifactId>maven-war-plugin</artifactId>
 		      <version>2.6</version>
-		    </plugin>
-		
-		    <!-- Plugin to execute command  "npm install" and "npm run build" inside /angular directory -->
-		    <plugin>
-		      <groupId>com.github.eirslett</groupId>
-		      <artifactId>frontend-maven-plugin</artifactId>
-		      <version>1.0</version>
-		      <configuration>
-		        <workingDirectory>angular</workingDirectory>
-		        <installDirectory>temp</installDirectory>
-		      </configuration>
-		      <executions>
-		        <!-- It will execute command "npm install" inside "/angular" directory -->
-		        <execution>
-		          <id>npm install</id>
-		          <goals>
-		            <goal>npm</goal>
-		          </goals>
-		          <configuration>
-		            <arguments>install</arguments>
-		          </configuration>
-		        </execution>
-		
-		        <!-- It will execute command "npm build" inside "/angular" directory to clean and create "/dist" directory-->
-		        <execution>
-		          <id>npm build</id>
-		          <goals>
-		            <goal>npm</goal>
-		          </goals>
-		          <configuration>
-		            <arguments>run run:dev</arguments>
-		          </configuration>
-		        </execution>
-		      </executions>
-		    </plugin>
-		
-		    <!-- Plugin to copy the content of /angular/dist/ directory to output directory (ie/ /target/transactionManager-1.0/) -->
-		    <plugin>
-		      <groupId>org.apache.maven.plugins</groupId>
-		      <artifactId>maven-resources-plugin</artifactId>
-		      <version>2.4.2</version>
-		      <executions>
-		        <execution>
-		          <id>default-copy-resources</id>
-		          <phase>process-resources</phase>
-		          <goals>
-		            <goal>copy-resources</goal>
-		          </goals>
-		          <configuration>
-		            <overwrite>true</overwrite>
-		            <outputDirectory>${project.build.directory}/${project.artifactId}-${project.version}/</outputDirectory>
-		            <resources>
-		              <resource>
-		                <directory>${project.basedir}/angular/dist/</directory>
-		              </resource>
-		            </resources>
-		          </configuration>
-		        </execution>
-		      </executions>
-		    </plugin>
+		    </plugin>		
         </plugins>
     </build>
 </project>
