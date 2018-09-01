@@ -1,10 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
-import { ReactiveFormsModule }    from '@angular/forms';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
-import { routing }        from './app.routing';
+import { routing } from './app.routing';
 
 import { AlertComponent } from '@directives';
 import { AuthGuard } from '@guards';
@@ -13,6 +13,7 @@ import { AlertService, AuthenticationService, UserService } from './_services';
 import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ScheduledMessagesComponent } from './scheduled-messages/scheduled-messages.component';
 
 @NgModule({
   imports: [
@@ -26,7 +27,8 @@ import { RegisterComponent } from './register/register.component';
       AlertComponent,
       LandingComponent,
       LoginComponent,
-      RegisterComponent
+      RegisterComponent,
+      ScheduledMessagesComponent
   ],
   providers: [
       AuthGuard,
