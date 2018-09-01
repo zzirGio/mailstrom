@@ -1,5 +1,8 @@
 package au.elec5619.mailstrom.services;
 
+import java.util.List;
+
+import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.hibernate.classic.Session;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,9 +15,9 @@ import au.elec5619.mailstrom.services.interfaces.IMessageService;
 @Service
 @Transactional
 public class MessageService implements IMessageService {
-	
+
 	private SessionFactory sessionFactory;
-	
+
 	@Autowired
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
@@ -24,6 +27,17 @@ public class MessageService implements IMessageService {
 	public Message getMessageById(long id) {
 		final Session currentSession = this.sessionFactory.getCurrentSession();
 		return (Message) currentSession.get(Message.class, id);
+	}
+
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Message> getMessagesByUserId(long id) {
+		final Session currentSession = this.sessionFactory.getCurrentSession();
+		Query query = currentSession.createQuery(
+				"FROM Message WHERE UserId = :id"
+				);
+		query.setParameter("id", id);
+		return query.list();
 	}
 
 	@Override
