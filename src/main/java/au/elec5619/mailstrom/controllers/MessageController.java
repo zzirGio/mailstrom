@@ -42,14 +42,17 @@ public class MessageController {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); 
 		}
 	}
-	
+
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public ResponseEntity<?> addMessage(@RequestBody String messageJson) {
 		return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-	public ResponseEntity<?> updateMessage(@PathVariable("id") long id, @RequestBody String messageJson) {
+	public ResponseEntity<?> updateMessage(
+			@PathVariable("id") long id, 
+			@RequestBody String messageJson
+			) {
 		Message message = this.messageService.getMessageById(id);
 		this.messageService.updateMessage(message);
 		return new ResponseEntity<>(HttpStatus.OK);
@@ -60,4 +63,16 @@ public class MessageController {
 		this.messageService.deleteMessageById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
+	
+	@RequestMapping(value = "/by-user/{id}", method = RequestMethod.GET)
+    public ResponseEntity<?> getUserMessages(@PathVariable("id") long userId) {
+    	List<Message> messages = this.messageService.getMessagesByUserId(userId);
+    	ObjectMapper mapper = new ObjectMapper();
+		try {
+			String result = mapper.writeValueAsString(messages);
+			return new ResponseEntity<>(result, HttpStatus.OK);
+		} catch (Exception e) {
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
+		}
+    }
 }

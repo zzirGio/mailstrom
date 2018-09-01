@@ -23,12 +23,12 @@ public class Message implements Serializable {
 	@Column(name="Id")
 	private long id;
 
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="user_id")
+	@ManyToOne()
+	@JoinColumn(name="UserId")
 	private User user;
 
-	@ManyToOne(fetch=FetchType.LAZY)
-	@JoinColumn(name="contact_id")
+	@ManyToOne()
+	@JoinColumn(name="ContactId")
 	private Contact contact;
 
 	@Column(name="Content", nullable=false)
