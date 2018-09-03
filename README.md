@@ -37,6 +37,11 @@ feature/#1-add-get-contacts-endpoint
 
 ## How to run for development
 
+#### Database
+1. Setup MySQL with user `root` and password `root`.
+2. Run SQL script `sql/setup.sql` to create tables.
+3. Run MySQL on default port.
+
 #### Backend
 1. In STS, import project as a maven project.
 2. Run backend on a Tomcat server. Verify on `localhost:8080`. 
