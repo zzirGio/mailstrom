@@ -14,6 +14,7 @@ import { LandingComponent } from './landing/landing.component';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ScheduledMessagesComponent } from './scheduled-messages/scheduled-messages.component';
+import { MessageListComponent } from './message-list/message-list.component';
 
 @NgModule({
   imports: [
@@ -28,7 +29,8 @@ import { ScheduledMessagesComponent } from './scheduled-messages/scheduled-messa
       LandingComponent,
       LoginComponent,
       RegisterComponent,
-      ScheduledMessagesComponent
+      ScheduledMessagesComponent,
+      MessageListComponent
   ],
   providers: [
       AuthGuard,
