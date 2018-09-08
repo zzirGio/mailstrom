@@ -4,7 +4,8 @@ import {
 } from '@guards';
 
 import {
-    AlertComponent
+    AlertComponent,
+    NavbarComponent 
 } from '@components';
 
 import {
@@ -16,8 +17,8 @@ import {
 import {
     LandingComponent,
     LoginComponent,
-    RegisterComponent
-    
+    RegisterComponent,
+    DashboardComponent    
 } from '@views';
 
 
@@ -26,7 +27,8 @@ export const GUARDS = [
 ];
 
 export const COMPONENTS = [
-    AlertComponent
+    AlertComponent,
+    NavbarComponent
 ];
 
 export const SERVICES = [
@@ -38,5 +40,6 @@ export const SERVICES = [
 export const VIEWS = [
     LandingComponent,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    DashboardComponent
 ];
