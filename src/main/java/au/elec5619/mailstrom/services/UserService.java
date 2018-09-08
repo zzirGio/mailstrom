@@ -60,10 +60,17 @@ public class UserService implements IUserService {
 		List<User> users = this.sessionFactory.getCurrentSession().createQuery("FROM User").list();
 		
 		return users.stream()
-		  .filter(u -> u.getUserName().equals(userName))
+		  .filter(u -> u.getUsername().equals(userName))
 		  .findFirst()
 		  .orElse(null);
 		
+	}
+	
+	@Override
+	public boolean userExists(String userName) {
+		List<User> users = this.getUsers();
+		
+		return users.stream().anyMatch(u -> u.getUsername().equals(userName));
 	}
 
 }
