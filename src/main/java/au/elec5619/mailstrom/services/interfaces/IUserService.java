@@ -17,4 +17,6 @@ public interface IUserService {
 	void updateUser(User user);
 	
 	void deleteUser(long id);
+	
+	boolean userExists(String userName);
 }

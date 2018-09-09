@@ -10,7 +10,7 @@ import javax.persistence.Table;
 
 @Entity 
 @Table(name="User")
-public class User implements Serializable {
+public class User {
 	
 	@Id
 	@GeneratedValue
@@ -20,8 +20,10 @@ public class User implements Serializable {
 	@Column(name="UserName")
 	private String userName;
 	
-	@Column(name="PasswordHash")
-	private String passwordHash;
+	@Column(name="Password")
+	private String password;
+	
+	private String token;
 	
 	public long getId() {
 		return id;
@@ -31,19 +33,27 @@ public class User implements Serializable {
 		this.id = id;
 	}
 	
-	public String getUserName() {
+	public String getUsername() {
 		return this.userName;
 	}
 	
-	public void setUserName(String userName) {
+	public void setUsername(String userName) {
 		this.userName = userName;
 	}
 	
-	public String getPasswordHash() {
-		return this.passwordHash;
+	public String getPassword() {
+		return this.password;
 	}
 	
-	public void setPasswordHash(String passwordHash) {
-		this.passwordHash = passwordHash;
+	public void setPassword(String password) {
+		this.password = password;
+	} 
+	
+	public String getToken() {
+		return this.token;
+	}
+	
+	public void setToken(String token) {
+		this.token = token;
 	} 
 }
