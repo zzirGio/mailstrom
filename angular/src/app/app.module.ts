@@ -29,6 +29,7 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
     DashboardComponent // TODO: move this to declarations.ts
   ],
   providers: [
+    ...SERVICES,
       { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
       { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   ],
