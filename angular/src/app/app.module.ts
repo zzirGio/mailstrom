@@ -9,7 +9,7 @@ import { routing } from './app.routing';
 import { JwtInterceptor, ErrorInterceptor } from '@helpers';
 
 // TODO: move this to views
-import { ScheduledMessagesComponent } from './scheduled-messages/scheduled-messages.component';
+import { MessageListComponent } from './message-list/message-list.component';
 
 import {GUARDS, COMPONENTS, SERVICES, VIEWS } from './app.declarations';
 import { DashboardComponent } from './views/dashboard/dashboard.component';
@@ -25,7 +25,7 @@ import { DashboardComponent } from './views/dashboard/dashboard.component';
     AppComponent,
     ...COMPONENTS,
     ...VIEWS,
-    ScheduledMessagesComponent,
+    MessageListComponent,
     DashboardComponent // TODO: move this to declarations.ts
   ],
   providers: [
