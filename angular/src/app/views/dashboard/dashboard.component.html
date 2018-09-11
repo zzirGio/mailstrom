@@ -1,4 +1,24 @@
-<h1>Hi {{currentUser.username}}!</h1>
-<p>You're logged in with Angular 6!!</p>
+<!-- <h1>Hi {{currentUser.username}}!</h1> -->
+<!-- <p>You're logged in with Angular 6!!</p> -->
 
-<p><a [routerLink]="['/login']">Logout</a></p>
+<!-- <p><a [routerLink]="['/login']">Logout</a></p> -->
+
+<page-content>
+    <action-content>
+        <div class="dashboard-page">
+            <h1>Mailstrom</h1>
+            <div class="row">
+                <button mat-raised-button color="primary" (click)="goToCreate()">{{ pageContent.create }}</button>
+            </div>
+            <div class="row">
+                <button mat-raised-button color="primary" (click)="goToTemplates()">{{ pageContent.templates }}</button>
+            </div>
+            <div class="row">
+                <button mat-raised-button color="primary" (click)="goToManage()">{{ pageContent.manage }}</button>
+            </div>
+            <div class="row">
+                <button mat-raised-button color="primary" (click)="goToContacts()">{{ pageContent.contacts }}</button>
+            </div>        
+        </div>
+    </action-content>
+</page-content>

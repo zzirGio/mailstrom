@@ -31,6 +31,13 @@ export const content = {
             },
             register: 'Register',
             cancel: 'Cancel'
+        },
+        dashboard: {
+            title: 'Mailstrom',
+            create: 'Create',
+            templates: 'Templates',
+            manage: 'Manage',
+            contacts: 'Contacts'
         }
     }
 };
