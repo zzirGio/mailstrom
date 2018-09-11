@@ -23,6 +23,7 @@
       "@guards": ["app/_guards/index"],
       "@helpers": ["app/_helpers/index"],
       "@models": ["app/_models/index"],
+      "@modules": ["app/_modules/index"],
       "@services": ["app/_services/index"],
       "@views": ["app/views/index"]
     }
