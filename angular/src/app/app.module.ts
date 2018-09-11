@@ -8,10 +8,7 @@ import { AppRouterModule } from '@app/app.routing';
 import { JwtInterceptor, ErrorInterceptor } from '@helpers';
 import { MatModule } from '@modules';
 
-// TODO: move this to views
-import { MessageListComponent } from './message-list/message-list.component';
-
-import {GUARDS, COMPONENTS, SERVICES, VIEWS } from './app.declarations';
+import { GUARDS, COMPONENTS, SERVICES, VIEWS } from './app.declarations';
 import { PageContentComponent } from './_components/page-content/page-content.component';
 import { ActionContentComponent } from './_components/action-content/action-content.component';
 
@@ -28,7 +25,6 @@ import { ActionContentComponent } from './_components/action-content/action-cont
     AppComponent,
     ...COMPONENTS,
     ...VIEWS,
-    MessageListComponent,
     PageContentComponent,
     ActionContentComponent // TODO: move this to declarations.ts
   ],

@@ -5,20 +5,22 @@ import {
 
 import {
     AlertComponent,
-    NavbarComponent 
+    NavbarComponent
 } from '@components';
 
 import {
     AlertService,
     AuthenticationService,
+    MessageService,
     UserService,
 } from '@services';
 
 import {
     LandingComponent,
     LoginComponent,
+    MessageListComponent,
     RegisterComponent,
-    DashboardComponent    
+    DashboardComponent
 } from '@views';
 
 
@@ -34,12 +36,14 @@ export const COMPONENTS = [
 export const SERVICES = [
     AlertService,
     AuthenticationService,
+    MessageService,
     UserService,
 ];
 
 export const VIEWS = [
     LandingComponent,
     LoginComponent,
+    MessageListComponent,
     RegisterComponent,
     DashboardComponent
 ];

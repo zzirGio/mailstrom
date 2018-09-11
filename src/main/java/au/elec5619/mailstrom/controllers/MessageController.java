@@ -14,16 +14,23 @@ import org.springframework.web.bind.annotation.RestController;
 
 import au.elec5619.mailstrom.models.*;
 import au.elec5619.mailstrom.services.interfaces.IMessageService;
+import au.elec5619.mailstrom.services.interfaces.IUserService;
 
 @RestController
 @RequestMapping("/api/message")
 public class MessageController {
 
 	private IMessageService messageService;
+	private IUserService userService;
 
 	@Autowired
 	public void setMessageService(IMessageService messageService) {
 		this.messageService = messageService;
+	}
+	
+	@Autowired
+	public void setUserService(IUserService userService) {
+		this.userService = userService;
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -74,5 +81,11 @@ public class MessageController {
 		} catch (Exception e) {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
+    }
+	
+	@RequestMapping(value = "/by-username/{username}", method = RequestMethod.GET)
+    public ResponseEntity<?> getUserMessages(@PathVariable("username") String username) {
+		User user = this.userService.getUserByUserName(username);
+    	return this.getUserMessages(user.getId());
     }
 }
