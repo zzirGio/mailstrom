@@ -18,7 +18,7 @@ DROP TABLE IF EXISTS `mailstrom`.`User` ;
 CREATE TABLE IF NOT EXISTS `mailstrom`.`User` (
   `Id` INT NOT NULL AUTO_INCREMENT,
   `UserName` VARCHAR(45) NOT NULL,
-  `PasswordHash` CHAR(60) NOT NULL,
+  `Password` CHAR(60) NOT NULL,
   PRIMARY KEY (`Id`),
   UNIQUE INDEX `UserName_UNIQUE` (`UserName` ASC) VISIBLE)
 ENGINE = InnoDB;
