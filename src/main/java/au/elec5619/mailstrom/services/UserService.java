@@ -63,7 +63,6 @@ public class UserService implements IUserService {
 		  .filter(u -> u.getUsername().equals(userName))
 		  .findFirst()
 		  .orElse(null);
-		
 	}
 	
 	@Override

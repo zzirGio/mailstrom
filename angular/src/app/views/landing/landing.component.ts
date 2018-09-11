@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { content } from '@app/app.content';
 
@@ -11,9 +12,13 @@ export class LandingComponent implements OnInit {
 
   pageContent = content.views.landing;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit() {
+  }
+
+  getStarted() {
+    this.router.navigate(['/login']);
   }
 
 }

@@ -15,7 +15,7 @@ const appRoutes: Routes = [
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
-    { path: 'messages', component: ScheduledMessagesComponent },
+    { path: 'messages', component: MessageListComponent },
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

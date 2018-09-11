@@ -12,6 +12,8 @@ import { MatModule } from '@modules';
 import { MessageListComponent } from './message-list/message-list.component';
 
 import {GUARDS, COMPONENTS, SERVICES, VIEWS } from './app.declarations';
+import { PageContentComponent } from './_components/page-content/page-content.component';
+import { ActionContentComponent } from './_components/action-content/action-content.component';
 
 @NgModule({
   imports: [
@@ -26,7 +28,9 @@ import {GUARDS, COMPONENTS, SERVICES, VIEWS } from './app.declarations';
     AppComponent,
     ...COMPONENTS,
     ...VIEWS,
-    ScheduledMessagesComponent // TODO: move this to declarations.ts
+    MessageListComponent,
+    PageContentComponent,
+    ActionContentComponent // TODO: move this to declarations.ts
   ],
   providers: [
     ...SERVICES,
