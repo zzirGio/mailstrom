@@ -1,8 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { first } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 import { User } from '@models';
 import { UserService } from '@services';
+
+import { content } from '@app/app.content';
 
 @Component({
   selector: 'app-dashboard',
@@ -10,14 +12,33 @@ import { UserService } from '@services';
   styleUrls: ['./dashboard.component.scss']
 })
 export class DashboardComponent implements OnInit {
-  currentUser: User;
-  users: User[] = [];
+  pageContent = content.views.dashboard;
 
-  constructor(private userService: UserService) {
-      this.currentUser = JSON.parse(localStorage.getItem('currentUser'));
+  constructor(private router: Router) {
   }
 
   ngOnInit() {
   }
 
+  // TODO: update these links
+
+  goToCreate() {
+    alert('Going to Create! But it is not implemented yet');
+    // this.router.navigate['/**'];
+  }
+
+  goToTemplates() {
+    alert('Going to Templates! But it is not implemented yet');
+    // this.router.navigate['/**'];
+  }
+
+  goToManage() {
+    alert('Going to Manage! But it is not implemented yet');
+    // this.router.navigate['/**'];
+  }
+
+  goToContacts() {
+    alert('Going to Contacts! But it is not implemented yet');
+    // this.router.navigate['/**'];
+  }
 }
