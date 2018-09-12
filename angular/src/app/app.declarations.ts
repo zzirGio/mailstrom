@@ -5,7 +5,9 @@ import {
 
 import {
     AlertComponent,
-    NavbarComponent
+    NavbarComponent,
+    PageContentComponent,
+    ActionContentComponent
 } from '@components';
 
 import {
@@ -20,9 +22,9 @@ import {
     LoginComponent,
     MessageListComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    ResetPasswordComponent
 } from '@views';
-
 
 export const GUARDS = [
     AuthGuard,
@@ -30,7 +32,9 @@ export const GUARDS = [
 
 export const COMPONENTS = [
     AlertComponent,
-    NavbarComponent
+    NavbarComponent,
+    PageContentComponent,
+    ActionContentComponent,
 ];
 
 export const SERVICES = [
@@ -45,5 +49,6 @@ export const VIEWS = [
     LoginComponent,
     MessageListComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    ResetPasswordComponent
 ];

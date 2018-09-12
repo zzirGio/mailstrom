@@ -9,8 +9,6 @@ import { JwtInterceptor, ErrorInterceptor } from '@helpers';
 import { MatModule } from '@modules';
 
 import { GUARDS, COMPONENTS, SERVICES, VIEWS } from './app.declarations';
-import { PageContentComponent } from './_components/page-content/page-content.component';
-import { ActionContentComponent } from './_components/action-content/action-content.component';
 
 @NgModule({
   imports: [
@@ -24,9 +22,7 @@ import { ActionContentComponent } from './_components/action-content/action-cont
   declarations: [
     AppComponent,
     ...COMPONENTS,
-    ...VIEWS,
-    PageContentComponent,
-    ActionContentComponent // TODO: move this to declarations.ts
+    ...VIEWS
   ],
   providers: [
     ...SERVICES,

@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { first } from 'rxjs/operators';
-import { HttpResponse, HttpErrorResponse } from '@angular/common/http';
 
 import { AlertService, UserService } from '@services';
 
@@ -28,12 +26,13 @@ export class RegisterComponent implements OnInit {
     ngOnInit() {
         this.registerForm = this.formBuilder.group({
             username: ['', [Validators.required, Validators.pattern(/^[a-z0-9]+$/i)]],
+            email: ['', [Validators.required]],
             password: ['', [Validators.required, Validators.minLength(8)]]
         });
     }
 
   // convenience getter for easy access to form fields
-    get f() { return this.registerForm.controls; }
+    get form() { return this.registerForm.controls; }
 
     onSubmit() {
         this.submitted = true;

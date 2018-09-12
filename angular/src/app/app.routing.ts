@@ -5,7 +5,8 @@ import {
     LoginComponent,
     MessageListComponent,
     RegisterComponent,
-    DashboardComponent
+    DashboardComponent,
+    ResetPasswordComponent
 } from '@views';
 
 import { AuthGuard } from '@guards';
@@ -14,6 +15,7 @@ const appRoutes: Routes = [
     { path: '', component: LandingComponent },
     { path: 'login', component: LoginComponent },
     { path: 'register', component: RegisterComponent },
+    { path: 'reset-password', component: ResetPasswordComponent },
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
     { path: 'messages', component: MessageListComponent },
 

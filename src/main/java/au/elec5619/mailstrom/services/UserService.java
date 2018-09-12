@@ -71,5 +71,18 @@ public class UserService implements IUserService {
 		
 		return users.stream().anyMatch(u -> u.getUsername().equals(userName));
 	}
-
+	
+	@Override
+	public boolean userExists(String userName, String email) {
+		List<User> users = this.getUsers();
+		
+		return users.stream().anyMatch(u -> u.getUsername().equals(userName) || u.getEmail().equals(email));
+	}
+	
+	@Override
+	public boolean emailExists(String email) {
+		List<User> users = this.getUsers();
+		
+		return users.stream().anyMatch(u -> u.getEmail().equals(email));
+	}
 }
