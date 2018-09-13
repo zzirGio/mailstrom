@@ -23,6 +23,7 @@ import {
     MessageListComponent,
     RegisterComponent,
     DashboardComponent,
+    UserManagementComponent,
     ResetPasswordComponent
 } from '@views';
 
@@ -50,5 +51,6 @@ export const VIEWS = [
     MessageListComponent,
     RegisterComponent,
     DashboardComponent,
+    UserManagementComponent,
     ResetPasswordComponent
 ];

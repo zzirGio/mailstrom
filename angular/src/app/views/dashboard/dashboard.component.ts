@@ -33,8 +33,7 @@ export class DashboardComponent implements OnInit {
   }
 
   goToManage() {
-    alert('Going to Manage! But it is not implemented yet');
-    // this.router.navigate['/**'];
+    this.router.navigate(['/user-management']);
   }
 
   goToContacts() {

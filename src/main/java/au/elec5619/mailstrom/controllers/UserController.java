@@ -163,10 +163,9 @@ public class UserController {
     	}
     	
     	try {
-    		currentUser.setId(-1);
-        	currentUser.setToken("fake-jwt-token");
-        	currentUser.setPassword(null);
-        	result = this.objectMapper.writeValueAsString(currentUser);        	
+    		user.setToken("fake-jwt-token");
+    		user.setPassword("");
+        	result = this.objectMapper.writeValueAsString(user);        	
     	} catch (Exception e) {
     		throw new InternalServerErrorException();
     	}
