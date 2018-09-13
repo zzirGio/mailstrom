@@ -24,4 +24,8 @@ export class UserService {
   delete(id: number) {
       return this.http.delete(`/api/user/` + id);
   }
+
+  resetPassword(user: User) {
+      return this.http.post(`api/user/resetpassword`, user);
+  }
 }

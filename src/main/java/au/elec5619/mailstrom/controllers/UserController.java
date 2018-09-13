@@ -10,6 +10,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.regex.Pattern;
+
 //import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.apache.commons.lang3.StringUtils;
 import org.codehaus.jackson.map.ObjectMapper;
@@ -63,11 +66,24 @@ public class UserController {
             throw new NotFoundException("User does not exist");
         }
         
+        User currentUser = null;
+        
         try {
-        	User currentUser = objectMapper.readValue(userJson, User.class);
+        	currentUser = objectMapper.readValue(userJson, User.class);
+        } catch (Exception e) {
+        	throw new InternalServerErrorException();
+        }
+        
+        try {
+        	if(!user.getEmail().equals(currentUser.getEmail()) && this.userService.emailExists(currentUser.getEmail())) {
+        		throw new ConflictException("Email already exists");
+        	}
+        	user.setEmail(currentUser.getEmail());
         	user.setPassword(currentUser.getPassword());
         	userService.updateUser(user);      
-		} catch (Exception e) {
+		} catch(ConflictException e) {
+			throw e;
+    	} catch (Exception e) {
 			throw new InternalServerErrorException();
 		}
 		
@@ -90,6 +106,37 @@ public class UserController {
     		throw new InternalServerErrorException();
     	}
 
+        return new ResponseEntity<>(HttpStatus.OK);
+    }
+    
+    @RequestMapping(value = "/resetpassword", method=RequestMethod.POST)
+    public ResponseEntity<?> resetPassword(@RequestBody String userJson) {
+    	
+    	User currentUser = null;
+    	
+    	try {
+			currentUser = this.objectMapper.readValue(userJson, User.class);   
+		} catch (Exception e) {
+			throw new InternalServerErrorException();
+		}
+    	
+    	if(currentUser.getUsername() == null || currentUser.getEmail() == null) {
+    		throw new BadRequestException("Invalid username or email");
+    	}
+    	
+    	User user = this.userService.getUserByUserName(currentUser.getUsername());
+        
+        if (user == null || !user.getEmail().equals(currentUser.getEmail())) {
+            throw new NotFoundException("User does not exist");
+        }
+        
+        try {
+        	user.setPassword(currentUser.getPassword());
+        	userService.updateUser(user);      
+		} catch (Exception e) {
+			throw new InternalServerErrorException();
+		}
+		
         return new ResponseEntity<>(HttpStatus.OK);
     }
     
@@ -140,16 +187,20 @@ public class UserController {
     		throw new InternalServerErrorException();
     	}
         	
-    	if(!isValidUserName(newUser.getUsername()) || !isValidPassword(newUser.getPassword())) {
-    		throw new BadRequestException("Invalid username or password");
+    	if(!isValidUserName(newUser.getUsername()) ||
+			!isValidPassword(newUser.getPassword()) ||
+			!isValidEmail(newUser.getEmail())) {
+    		throw new BadRequestException("Invalid username, email or password");
     	}
     	
-    	if(this.userService.userExists(newUser.getUsername())) {
+    	if(this.userService.userExists(newUser.getUsername(), newUser.getEmail())) {
     		throw new ConflictException("User already exists");
     	}
+    	
     	try {        	
         	User user = new User();
         	user.setUsername(newUser.getUsername());
+        	user.setEmail(newUser.getEmail());
 //        	user.setPassword(this.bCryptPasswordEncoder.encode(profile.getPassword()));  	
         	user.setPassword(newUser.getPassword());	
 
@@ -191,5 +242,19 @@ public class UserController {
     	}
     	
     	return true;
+    }
+    
+    private boolean isValidEmail(String email) {
+    	String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
+                "[a-zA-Z0-9_+&*-]+)*@" + 
+                "(?:[a-zA-Z0-9-]+\\.)+[a-z" + 
+                "A-Z]{2,7}$"; 
+                  
+		Pattern pat = Pattern.compile(emailRegex); 
+		if (email == null) {
+			return false; 
+		}
+		
+		return pat.matcher(email).matches(); 
     }
 }
