@@ -6,6 +6,7 @@ import {
     MessageListComponent,
     RegisterComponent,
     DashboardComponent,
+    UserManagementComponent,
     ResetPasswordComponent
 } from '@views';
 
@@ -18,6 +19,7 @@ const appRoutes: Routes = [
     { path: 'reset-password', component: ResetPasswordComponent },
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
     { path: 'messages', component: MessageListComponent },
+    { path: 'user-management', component: UserManagementComponent, canActivate: [AuthGuard]},
 
     // otherwise redirect to home
     { path: '**', redirectTo: '' }

@@ -45,6 +45,21 @@ export const content = {
             manage: 'Manage',
             contacts: 'Contacts'
         },
+        userManagement: {
+            email: {
+                label: 'New Email',
+                required: 'Email is required',
+                invalid: 'Email is invalid'
+            },
+            password: {
+                label: 'New Password',
+                required: 'Password is required',
+                minlength: 'Password must be at least 8 characters'
+            },
+            update: 'Update',
+            cancel: 'Cancel',
+            submitSuccess: 'User details updated!'
+        },
         resetPassword: {
             username: {
                 label: 'Username',
