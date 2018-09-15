@@ -1,0 +1,17 @@
+<mat-card *ngIf="!show">
+  <mat-card-content>DELETED</mat-card-content>
+</mat-card>
+<mat-card *ngIf="show">
+  <mat-card-header>
+    <mat-card-title>To: {{ message.contact.name }}</mat-card-title>
+    <mat-card-subtitle>Scheduled for {{ message.timeToBeSent | date:'MMM d, y h:mm a' }}</mat-card-subtitle>
+  </mat-card-header>
+  <mat-card-content>
+    <p>{{ message.content }}</p>
+  </mat-card-content>
+  <mat-card-actions align="end">
+    <button mat-button (click)="edit()">EDIT</button>
+    <button mat-button (click)="delete()">DELETE</button>
+  </mat-card-actions>
+</mat-card>
+<br>

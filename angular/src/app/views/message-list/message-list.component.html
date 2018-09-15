@@ -1,12 +1,16 @@
-<h2>Scheduled messages</h2>
-<app-alert></app-alert>
-<div *ngIf="messages.length === 0">
-  No scheduled messages.
-</div>
-<div *ngIf="messages.length > 0">
-  <ul>
-    <li *ngFor="let message of messages">
-      #{{ message.id }}: {{ message.content }}
-    </li>
-  </ul>
+<div class="container">
+    <h2>Scheduled messages</h2>
+    <app-alert></app-alert>
+    <div *ngIf="isLoading">
+      Loading...
+    </div>
+    <div *ngIf="!isLoading && messages.length === 0">
+      No scheduled messages.
+    </div>
+    <div *ngIf="!isLoading && messages.length > 0">
+    <app-message
+      *ngFor="let message of messages"
+      [message]="message">
+    </app-message>
+    </div>
 </div>

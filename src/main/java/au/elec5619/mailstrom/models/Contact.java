@@ -17,4 +17,15 @@ public class Contact implements Serializable {
 	@Column(name="Id")
 	private long id;
 	
+	@Column(name="Name")
+	private String name;
+	
+	public long getId() {
+		return this.id;
+	}
+	
+	public String getName() {
+		return this.name;
+	}
+	
 }
