@@ -7,6 +7,7 @@ import { Message } from '@models'
   providedIn: 'root'
 })
 export class MessageService {
+
   constructor(private http: HttpClient) { }
 
   getById(id: number) {
@@ -15,5 +16,9 @@ export class MessageService {
 
   getMessagesByUsername(username: string) {
     return this.http.get<Message[]>(`/api/message/by-username/${username}`)
+  }
+
+  deleteMessageById(id: number) {
+    return this.http.delete(`/api/message/${id}`);
   }
 }

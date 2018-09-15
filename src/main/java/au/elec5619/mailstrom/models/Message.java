@@ -51,6 +51,10 @@ public class Message implements Serializable {
 	public User getUser() {
 		return this.user;
 	}
+	
+	public Contact getContact() {
+		return this.contact;
+	}
 
 	public String getContent() {
 		return this.content;
@@ -58,5 +62,9 @@ public class Message implements Serializable {
 
 	public Timestamp getTimeCreated() {
 		return this.timeCreated;
+	}
+	
+	public Timestamp getTimeToBeSent() {
+		return this.timeToBeSent;
 	}
 }

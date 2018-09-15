@@ -27,12 +27,16 @@ export class DashboardComponent implements OnInit {
     // this.router.navigate['/**'];
   }
 
+  goToScheduledMessages() {
+    this.router.navigate(['/messages']);
+  }
+
   goToTemplates() {
     alert('Going to Templates! But it is not implemented yet');
     // this.router.navigate['/**'];
   }
 
-  goToManage() {
+  goToManageProfile() {
     this.router.navigate(['/user-management']);
   }
 

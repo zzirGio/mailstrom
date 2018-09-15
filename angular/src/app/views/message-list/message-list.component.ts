@@ -9,6 +9,7 @@ import { AlertService, MessageService } from "@app/_services";
   styleUrls: ["./message-list.component.scss"]
 })
 export class MessageListComponent implements OnInit {
+  isLoading: boolean = true;
   messages: Message[] = [];
   currentUsername: string;
 
@@ -24,12 +25,14 @@ export class MessageListComponent implements OnInit {
   }
 
   getMessages() {
-    this.messageService.getMessagesByUsername("jono").subscribe(
+    this.messageService.getMessagesByUsername(this.currentUsername).subscribe(
       data => {
         this.messages = data;
+        this.isLoading = false;
       },
       error => {
         this.alertService.error("Unable to load messages.");
+        this.isLoading = false;
       }
     );
   }

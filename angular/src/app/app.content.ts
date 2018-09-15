@@ -41,8 +41,9 @@ export const content = {
         dashboard: {
             title: 'Mailstrom',
             create: 'Create',
+            scheduledMessages: 'Scheduled Messages',
             templates: 'Templates',
-            manage: 'Manage',
+            manageProfile: 'Manage Profile',
             contacts: 'Contacts'
         },
         userManagement: {

@@ -11,14 +11,17 @@
                 <button mat-raised-button color="primary" (click)="goToCreate()">{{ pageContent.create }}</button>
             </div>
             <div class="row">
+                <button mat-raised-button color="primary" (click)="goToScheduledMessages()">{{ pageContent.scheduledMessages }}</button>
+            </div>
+            <div class="row">
                 <button mat-raised-button color="primary" (click)="goToTemplates()">{{ pageContent.templates }}</button>
             </div>
             <div class="row">
-                <button mat-raised-button color="primary" (click)="goToManage()">{{ pageContent.manage }}</button>
+                <button mat-raised-button color="primary" (click)="goToManageProfile()">{{ pageContent.manageProfile }}</button>
             </div>
             <div class="row">
                 <button mat-raised-button color="primary" (click)="goToContacts()">{{ pageContent.contacts }}</button>
-            </div>        
+            </div>
         </div>
     </action-content>
 </page-content>
