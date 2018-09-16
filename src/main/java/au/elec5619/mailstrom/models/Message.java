@@ -5,7 +5,6 @@ import java.sql.Timestamp;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
@@ -59,6 +58,10 @@ public class Message implements Serializable {
 	public String getContent() {
 		return this.content;
 	}
+	
+	public void setContent(String content) {
+		this.content = content;
+	}
 
 	public Timestamp getTimeCreated() {
 		return this.timeCreated;
@@ -66,5 +69,9 @@ public class Message implements Serializable {
 	
 	public Timestamp getTimeToBeSent() {
 		return this.timeToBeSent;
+	}
+	
+	public void setTimeToBeSent(Timestamp timestamp) {
+		this.timeToBeSent = timestamp;
 	}
 }

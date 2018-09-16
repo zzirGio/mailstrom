@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import au.elec5619.mailstrom.exceptions.InternalServerErrorException;
+import au.elec5619.mailstrom.exceptions.NotFoundException;
 import au.elec5619.mailstrom.models.*;
 import au.elec5619.mailstrom.services.interfaces.IMessageService;
 import au.elec5619.mailstrom.services.interfaces.IUserService;
@@ -61,7 +63,17 @@ public class MessageController {
 			@RequestBody String messageJson
 			) {
 		Message message = this.messageService.getMessageById(id);
-		this.messageService.updateMessage(message);
+		if (message == null) {
+			throw new NotFoundException("Message does not exist. Cannot be updated.");
+		}
+		try {
+			ObjectMapper mapper = new ObjectMapper();
+			Message updatedMessage = mapper.readValue(messageJson, Message.class);
+			message.setContent(updatedMessage.getContent());
+			this.messageService.updateMessage(message);
+		} catch (Exception e) {
+			throw new InternalServerErrorException();
+		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
 
