@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { Router } from "@angular/router";
 
 import { Message } from "@models";
 import { AlertService, MessageService } from "@app/_services";
@@ -14,6 +15,7 @@ export class MessageComponent implements OnInit {
   show: boolean = true;
 
   constructor(
+    private router: Router,
     private alertService: AlertService,
     private messageService: MessageService
   ) {}
@@ -21,7 +23,7 @@ export class MessageComponent implements OnInit {
   ngOnInit() {}
 
   edit() {
-    alert("Not implemented yet.");
+    this.router.navigate([`/edit-message/${this.message.id}`]);
   }
 
   delete() {

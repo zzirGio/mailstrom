@@ -21,4 +21,8 @@ export class MessageService {
   deleteMessageById(id: number) {
     return this.http.delete(`/api/message/${id}`);
   }
+
+  updateMessage(message: Message) {
+    return this.http.put(`/api/message/${message.id}`, message);
+  }
 }
