@@ -10,7 +10,7 @@ import { AlertService, MessageService } from "@app/_services";
 })
 export class MessageListComponent implements OnInit {
   isLoading: boolean = true;
-  messages: Message[] = [];
+  messages: Message[];
   currentUsername: string;
 
   constructor(
