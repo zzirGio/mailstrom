@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
-import { AlertService, UserService } from '@services';
+import { MatSnackBar } from '@angular/material';
+import { UserService } from '@services';
 
 import { content } from '@app/app.content';
 
@@ -21,7 +21,7 @@ export class ResetPasswordComponent implements OnInit {
       private formBuilder: FormBuilder,
       private router: Router,
       private userService: UserService,
-      private alertService: AlertService) { }
+      private snackBar: MatSnackBar) { }
 
   ngOnInit() {
       this.resetForm = this.formBuilder.group({
@@ -44,14 +44,14 @@ export class ResetPasswordComponent implements OnInit {
 
       this.loading = true;
       this.userService.resetPassword(this.resetForm.value).subscribe(
-          res => {
-              this.alertService.success(this.pageContent.resetSuccess, true);
-              this.router.navigate(['/login']);
-          }, 
-          error => {
-              this.alertService.error(error);
-              this.loading = false;
-          });
+        res => {
+            this.snackBar.open(this.pageContent.resetSuccess, 'Dismiss', { duration: 3000 });
+            this.router.navigate(['/login']);
+        }, 
+        error => {
+            this.snackBar.open(error, 'Dismiss', { duration: 3000 });
+            this.loading = false;
+        });
   }
 
 }

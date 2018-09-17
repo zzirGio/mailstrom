@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { MatSnackBar } from '@angular/material';
 
 import { User } from '@models';
-import { AlertService, UserService } from '@services';
+import { UserService } from '@services';
 
 import { content } from '@app/app.content';
 
@@ -23,7 +24,7 @@ export class UserManagementComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService,
-    private alertService: AlertService) { }
+    private snackBar: MatSnackBar) { }
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
@@ -55,14 +56,14 @@ export class UserManagementComponent implements OnInit {
     }
     this.userService.update(updatedDetails).subscribe(
       res => {
-          this.alertService.success(this.pageContent.submitSuccess, true);
-          updatedDetails.password = '';
-          localStorage.setItem('currentUser', JSON.stringify(updatedDetails));
-          this.router.navigate(['/dashboard']);
+        this.snackBar.open(this.pageContent.submitSuccess, 'Dismiss', { duration: 3000 });
+        updatedDetails.password = '';
+        localStorage.setItem('currentUser', JSON.stringify(updatedDetails));
+        this.router.navigate(['/dashboard']);
       }, 
       error => {
-          this.alertService.error(error);
-          this.loading = false;
+        this.snackBar.open(error, 'Dismiss', { duration: 3000 });
+        this.loading = false;
     });
   }
 }
