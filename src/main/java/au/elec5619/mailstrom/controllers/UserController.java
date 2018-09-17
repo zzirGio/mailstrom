@@ -1,5 +1,7 @@
 package au.elec5619.mailstrom.controllers;
 
+import java.util.regex.Pattern;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -10,10 +12,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
-
-import java.util.regex.Pattern;
-
-//import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.apache.commons.lang3.StringUtils;
 import org.codehaus.jackson.map.ObjectMapper;
 
@@ -27,12 +27,14 @@ public class UserController {
 		
 	@Autowired
 	private IUserService userService;
-	private ObjectMapper objectMapper;
 	
+	private ObjectMapper objectMapper;
+	private PasswordEncoder passwordEncoder;
 	private final int MIN_PASSWORD_LENGTH = 8;
 	
 	public UserController() {
 		this.objectMapper = new ObjectMapper();
+		this.passwordEncoder = new BCryptPasswordEncoder();
 	}
 	
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -158,7 +160,7 @@ public class UserController {
     	
     	User user = this.userService.getUserByUserName(currentUser.getUsername());
     	
-    	if(user == null || !user.getPassword().equals(currentUser.getPassword())) {
+    	if(user == null || !this.passwordEncoder.matches(currentUser.getPassword(), user.getPassword())) {
     		throw new NotFoundException("Incorrect username or password");
     	}
     	
@@ -200,8 +202,7 @@ public class UserController {
         	User user = new User();
         	user.setUsername(newUser.getUsername());
         	user.setEmail(newUser.getEmail());
-//        	user.setPassword(this.bCryptPasswordEncoder.encode(profile.getPassword()));  	
-        	user.setPassword(newUser.getPassword());	
+        	user.setPassword(this.passwordEncoder.encode(newUser.getPassword()));
 
         	this.userService.addUser(user);
     	} catch (Exception e) {
