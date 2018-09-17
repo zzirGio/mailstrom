@@ -133,7 +133,7 @@ public class UserController {
         }
         
         try {
-        	user.setPassword(currentUser.getPassword());
+        	user.setPassword(this.passwordEncoder.encode(currentUser.getPassword()));
         	userService.updateUser(user);      
 		} catch (Exception e) {
 			throw new InternalServerErrorException();
