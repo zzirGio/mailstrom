@@ -3,9 +3,10 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { first } from 'rxjs/operators';
 
-import { AlertService, AuthenticationService } from '@services';
+import { AuthenticationService } from '@services';
 
 import { content } from '@app/app.content';
+import { MatSnackBar } from '@angular/material';
 
 @Component({
   selector: 'app-login',
@@ -24,7 +25,7 @@ export class LoginComponent implements OnInit {
       private route: ActivatedRoute,
       private router: Router,
       private authenticationService: AuthenticationService,
-      private alertService: AlertService) {}
+      private snackBar: MatSnackBar) {}
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({
@@ -62,7 +63,7 @@ export class LoginComponent implements OnInit {
                 this.router.navigate(['/dashboard']);
             },
             error => {
-                this.alertService.error(error);
+                this.snackBar.open(error, 'Dismiss', { duration: 3000 });
                 this.loading = false;
             });
   }

@@ -4,6 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from '@app/app.component';
 import { AppRouterModule } from '@app/app.routing';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 
 import { JwtInterceptor, ErrorInterceptor } from '@helpers';
 import { MatModule } from '@modules';
@@ -16,6 +17,7 @@ import { GUARDS, COMPONENTS, SERVICES, VIEWS } from './app.declarations';
       ReactiveFormsModule,
       HttpClientModule,
       AppRouterModule,
+      BrowserAnimationsModule,
       MatModule
     //   FlexLayoutModule,
   ],
