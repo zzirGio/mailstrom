@@ -27,16 +27,20 @@ export class LoginComponent implements OnInit {
       private alertService: AlertService) {}
 
   ngOnInit() {
-      this.loginForm = this.formBuilder.group({
-          username: ['', Validators.required],
-          password: ['', Validators.required]
-      });
+    this.loginForm = this.formBuilder.group({
+        username: ['', Validators.required],
+        password: ['', Validators.required]
+    });
 
+    if(localStorage.getItem('currentUser')) {
+      console.log('Already logged in!');
+      this.router.navigate(['/dashboard']);
+    } else {
       // reset login status
       this.authenticationService.logout();
-
       // get return url from route parameters or default to '/'
       this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
+    }
   }
 
   // convenience getter for easy access to form fields
