@@ -22,6 +22,7 @@ import {
 import {
     LandingComponent,
     LoginComponent,
+    MessageCreateComponent,
     MessageEditComponent,
     MessageListComponent,
     RegisterComponent,
@@ -53,6 +54,7 @@ export const SERVICES = [
 export const VIEWS = [
     LandingComponent,
     LoginComponent,
+    MessageCreateComponent,
     MessageEditComponent,
     MessageListComponent,
     RegisterComponent,
