@@ -4,10 +4,10 @@
     <div *ngIf="isLoading">
       Loading...
     </div>
-    <div *ngIf="!isLoading && messages.length === 0">
+    <div *ngIf="messages?.length === 0">
       No scheduled messages.
     </div>
-    <div *ngIf="!isLoading && messages.length > 0">
+    <div *ngIf="messages?.length > 0">
     <app-message
       *ngFor="let message of messages"
       [message]="message">

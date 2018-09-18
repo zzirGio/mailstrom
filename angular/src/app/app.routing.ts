@@ -11,6 +11,7 @@ import {
 } from '@views';
 
 import { AuthGuard } from '@guards';
+import { MessageEditComponent } from '@app/_components';
 
 const appRoutes: Routes = [
     { path: '', component: LandingComponent },
@@ -19,6 +20,7 @@ const appRoutes: Routes = [
     { path: 'reset-password', component: ResetPasswordComponent },
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
     { path: 'messages', component: MessageListComponent },
+    { path: 'edit-message/:id', component: MessageEditComponent },
     { path: 'user-management', component: UserManagementComponent, canActivate: [AuthGuard]},
 
     // otherwise redirect to home
