@@ -74,4 +74,12 @@ public class Message implements Serializable {
 	public void setTimeToBeSent(Timestamp timestamp) {
 		this.timeToBeSent = timestamp;
 	}
+	
+	public boolean getIsSent() {
+		return this.isSent;
+	}
+	
+	public void setIsSent(boolean isSent) {
+		this.isSent = isSent;
+	}
 }

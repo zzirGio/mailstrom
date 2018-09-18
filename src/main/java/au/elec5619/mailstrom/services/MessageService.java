@@ -1,5 +1,6 @@
 package au.elec5619.mailstrom.services;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -37,6 +38,17 @@ public class MessageService implements IMessageService {
 				"FROM Message WHERE UserId = :id"
 				);
 		query.setParameter("id", id);
+		return query.list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Message> getMessagesByTimestamp(Timestamp timestamp) {
+		final Session currentSession = this.sessionFactory.getCurrentSession();
+		Query query = currentSession.createQuery(
+				"FROM Message WHERE TimeToBeSent = :timestamp"
+				);
+		query.setParameter("timestamp", timestamp);
 		return query.list();
 	}
 
