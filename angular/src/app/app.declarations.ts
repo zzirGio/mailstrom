@@ -6,6 +6,7 @@ import {
 import {
     AlertComponent,
     MessageComponent,
+    MessageFormComponent,
     NavbarComponent,
     PageContentComponent,
     ActionContentComponent
@@ -36,6 +37,7 @@ export const GUARDS = [
 export const COMPONENTS = [
     AlertComponent,
     MessageComponent,
+    MessageFormComponent,
     NavbarComponent,
     PageContentComponent,
     ActionContentComponent,
