@@ -2,6 +2,8 @@ package au.elec5619.mailstrom.services.interfaces;
 
 import java.util.List;
 
+import org.springframework.security.core.userdetails.UserDetails;
+
 import au.elec5619.mailstrom.models.User;;
 
 public interface IUserService {
@@ -23,4 +25,6 @@ public interface IUserService {
 	boolean userExists(String userName, String email);
 	
 	boolean emailExists(String email);
+	
+	UserDetails loadUserDetailsByUsername(String username);
 }

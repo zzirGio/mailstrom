@@ -55,6 +55,17 @@ public class RestApiExceptionHandler extends ResponseEntityExceptionHandler {
     	final ApiError apiError = new ApiError(HttpStatus.CONFLICT, ex.getLocalizedMessage(), ex.getMessage());
     	return new ResponseEntity<>(this.mapper.writeValueAsString(apiError), httpHeaders, apiError.getStatus());  	
     }
+    
+    @ExceptionHandler({ ForbiddenException.class })
+    protected ResponseEntity<String> handleForbidden(final RuntimeException ex, final WebRequest request)
+    		throws JsonGenerationException, JsonMappingException, IOException {
+    	
+    	final HttpHeaders httpHeaders= new HttpHeaders();
+	    httpHeaders.setContentType(MediaType.APPLICATION_JSON);
+    	
+    	final ApiError apiError = new ApiError(HttpStatus.FORBIDDEN, ex.getLocalizedMessage(), ex.getMessage());
+    	return new ResponseEntity<>(this.mapper.writeValueAsString(apiError), httpHeaders, apiError.getStatus());  	
+    }
 
     @ExceptionHandler({ InternalServerErrorException.class })
     public ResponseEntity<String> handleInternalServerError(final Exception ex, final WebRequest request)
