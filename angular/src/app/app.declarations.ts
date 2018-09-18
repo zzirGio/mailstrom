@@ -6,7 +6,6 @@ import {
 import {
     AlertComponent,
     MessageComponent,
-    MessageEditComponent,
     NavbarComponent,
     PageContentComponent,
     ActionContentComponent
@@ -22,6 +21,7 @@ import {
 import {
     LandingComponent,
     LoginComponent,
+    MessageEditComponent,
     MessageListComponent,
     RegisterComponent,
     DashboardComponent,
@@ -36,7 +36,6 @@ export const GUARDS = [
 export const COMPONENTS = [
     AlertComponent,
     MessageComponent,
-    MessageEditComponent,
     NavbarComponent,
     PageContentComponent,
     ActionContentComponent,
@@ -52,6 +51,7 @@ export const SERVICES = [
 export const VIEWS = [
     LandingComponent,
     LoginComponent,
+    MessageEditComponent,
     MessageListComponent,
     RegisterComponent,
     DashboardComponent,

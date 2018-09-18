@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import {
     LandingComponent,
     LoginComponent,
+    MessageEditComponent,
     MessageListComponent,
     RegisterComponent,
     DashboardComponent,
@@ -11,7 +12,6 @@ import {
 } from '@views';
 
 import { AuthGuard } from '@guards';
-import { MessageEditComponent } from '@app/_components';
 
 const appRoutes: Routes = [
     { path: '', component: LandingComponent },
