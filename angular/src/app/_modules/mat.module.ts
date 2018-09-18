@@ -3,8 +3,12 @@ import { NgModule } from "@angular/core";
 import {
   MatButtonModule,
   MatCheckboxModule,
+<<<<<<< HEAD
   MatNativeDateModule,
   MatSnackBarModule
+=======
+  MatNativeDateModule
+>>>>>>> bbd8e6f4ef22f9eaa77e99942d33e430ae75a317
 } from "@angular/material";
 import { MatCardModule } from "@angular/material/card";
 import { MatDatepickerModule } from "@angular/material/datepicker";

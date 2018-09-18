@@ -18,7 +18,10 @@ import { GUARDS, COMPONENTS, SERVICES, VIEWS } from './app.declarations';
       ReactiveFormsModule,
       HttpClientModule,
       AppRouterModule,
+<<<<<<< HEAD
       BrowserAnimationsModule,
+=======
+>>>>>>> bbd8e6f4ef22f9eaa77e99942d33e430ae75a317
       MatModule,
       FormsModule,
     //   FlexLayoutModule,
