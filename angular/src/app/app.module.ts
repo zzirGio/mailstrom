@@ -26,7 +26,7 @@ import { GUARDS, COMPONENTS, SERVICES, VIEWS } from './app.declarations';
   declarations: [
     AppComponent,
     ...COMPONENTS,
-    ...VIEWS
+    ...VIEWS,
   ],
   providers: [
     ...SERVICES,

@@ -3,15 +3,16 @@ import { Routes, RouterModule } from '@angular/router';
 import {
     LandingComponent,
     LoginComponent,
+    MessageEditComponent,
     MessageListComponent,
     RegisterComponent,
     DashboardComponent,
     UserManagementComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    MessageCreateComponent
 } from '@views';
 
 import { AuthGuard } from '@guards';
-import { MessageEditComponent } from '@app/_components';
 
 const appRoutes: Routes = [
     { path: '', component: LandingComponent },
@@ -20,6 +21,7 @@ const appRoutes: Routes = [
     { path: 'reset-password', component: ResetPasswordComponent },
     { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuard] },
     { path: 'messages', component: MessageListComponent },
+    { path: 'create-message', component: MessageCreateComponent },
     { path: 'edit-message/:id', component: MessageEditComponent },
     { path: 'user-management', component: UserManagementComponent, canActivate: [AuthGuard]},
 

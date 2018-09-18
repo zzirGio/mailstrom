@@ -23,8 +23,7 @@ export class DashboardComponent implements OnInit {
   // TODO: update these links
 
   goToCreate() {
-    alert('Going to Create! But it is not implemented yet');
-    // this.router.navigate['/**'];
+    this.router.navigate(['/create-message']);
   }
 
   goToScheduledMessages() {

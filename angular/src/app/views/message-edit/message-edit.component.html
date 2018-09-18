@@ -1,0 +1,6 @@
+<div class="container">
+    <app-alert></app-alert>
+    <app-message-form [formHeading]="formHeading" [isUpdatingExistingMessage]="true" [message]="message">
+    </app-message-form>
+    <mat-card *ngIf="isLoading">Loading...</mat-card>
+</div>
