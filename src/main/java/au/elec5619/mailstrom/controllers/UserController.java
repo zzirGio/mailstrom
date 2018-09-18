@@ -2,6 +2,9 @@ package au.elec5619.mailstrom.controllers;
 
 import java.util.regex.Pattern;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
@@ -19,6 +22,8 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import au.elec5619.mailstrom.exceptions.*;
 import au.elec5619.mailstrom.models.*;
+import au.elec5619.mailstrom.security.TokenHelper;
+import au.elec5619.mailstrom.services.interfaces.IRequestAuthorizationService;
 import au.elec5619.mailstrom.services.interfaces.IUserService;
 
 @RestController
@@ -27,6 +32,11 @@ public class UserController {
 		
 	@Autowired
 	private IUserService userService;
+	@Autowired
+	private IRequestAuthorizationService requestAuthorizationService;
+	
+	@Autowired
+	TokenHelper tokenHelper;
 	
 	private ObjectMapper objectMapper;
 	private PasswordEncoder passwordEncoder;
@@ -38,7 +48,16 @@ public class UserController {
 	}
 	
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getUser(@PathVariable("id") long id) {
+    public ResponseEntity<?> getUser(@PathVariable("id") long id, HttpServletRequest request, 
+            HttpServletResponse response) {
+    	
+    	String error = requestAuthorizationService.isRequestAuthorized(request);
+    	
+    	if(error != null) {
+    		System.out.println(error);
+    		throw new ForbiddenException(error);
+    	}
+    	
         System.out.println("Fetching User with id " + id);
         User user = userService.getUserById(id);
         if (user == null) {
@@ -60,8 +79,15 @@ public class UserController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
-    public ResponseEntity<?> updateUser(@PathVariable("id") long id, @RequestBody String userJson) {
+    public ResponseEntity<?> updateUser(@PathVariable("id") long id, @RequestBody String userJson, HttpServletRequest request) {
 
+    	String error = requestAuthorizationService.isRequestAuthorized(request);
+    	
+    	if(error != null) {
+    		System.out.println(error);
+    		throw new ForbiddenException(error);
+    	}
+    	
         User user = userService.getUserById(id);
          
         if (user == null) {
@@ -81,7 +107,7 @@ public class UserController {
         		throw new ConflictException("Email already exists");
         	}
         	user.setEmail(currentUser.getEmail());
-        	user.setPassword(currentUser.getPassword());
+        	user.setPassword(this.passwordEncoder.encode(currentUser.getPassword()));
         	userService.updateUser(user);      
 		} catch(ConflictException e) {
 			throw e;
@@ -93,7 +119,15 @@ public class UserController {
     }
     
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
-    public ResponseEntity<?> deleteUser(@PathVariable("id") long id) {
+    public ResponseEntity<?> deleteUser(@PathVariable("id") long id, HttpServletRequest request) {
+
+    	String error = requestAuthorizationService.isRequestAuthorized(request);
+    	
+    	if(error != null) {
+    		System.out.println(error);
+    		throw new ForbiddenException(error);
+    	}
+    	
         System.out.println("Fetching & Deleting User with id " + id);
  
         User user = userService.getUserById(id);
@@ -165,7 +199,8 @@ public class UserController {
     	}
     	
     	try {
-    		user.setToken("fake-jwt-token");
+    		String jwt = tokenHelper.generateToken(user.getUsername());
+    		user.setToken(jwt);
     		user.setPassword("");
         	result = this.objectMapper.writeValueAsString(user);        	
     	} catch (Exception e) {
