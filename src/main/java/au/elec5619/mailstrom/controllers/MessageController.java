@@ -29,7 +29,7 @@ public class MessageController {
 	public void setMessageService(IMessageService messageService) {
 		this.messageService = messageService;
 	}
-	
+
 	@Autowired
 	public void setUserService(IUserService userService) {
 		this.userService = userService;
@@ -43,23 +43,31 @@ public class MessageController {
 		}
 		try {
 			return new ResponseEntity<>(
-					new ObjectMapper().writeValueAsString(message), 
+					new ObjectMapper().writeValueAsString(message),
 					HttpStatus.OK
 					);
 		} catch (Exception e) {
 			System.out.println(e.getMessage());
-			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR); 
+			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
 	}
 
 	@RequestMapping(value = "/create", method = RequestMethod.POST)
 	public ResponseEntity<?> addMessage(@RequestBody String messageJson) {
-		return new ResponseEntity<>(HttpStatus.NOT_IMPLEMENTED);
+		ObjectMapper mapper = new ObjectMapper();
+    	Message message;
+    	try {
+        	message = mapper.readValue(messageJson, Message.class);
+        	this.messageService.addMessage(message);
+    	} catch (Exception e) {
+    		throw new InternalServerErrorException("Unable to save message to database");
+    	}
+    	return new ResponseEntity<>(HttpStatus.CREATED);
 	}
 
 	@RequestMapping(value = "/{id}", method = RequestMethod.PUT)
 	public ResponseEntity<?> updateMessage(
-			@PathVariable("id") long id, 
+			@PathVariable("id") long id,
 			@RequestBody String messageJson
 			) {
 		Message message = this.messageService.getMessageById(id);
@@ -82,7 +90,7 @@ public class MessageController {
 		this.messageService.deleteMessageById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
-	
+
 	@RequestMapping(value = "/by-user/{id}", method = RequestMethod.GET)
     public ResponseEntity<?> getUserMessages(@PathVariable("id") long userId) {
     	List<Message> messages = this.messageService.getMessagesByUserId(userId);
@@ -94,7 +102,7 @@ public class MessageController {
 			return new ResponseEntity<>(HttpStatus.INTERNAL_SERVER_ERROR);
 		}
     }
-	
+
 	@RequestMapping(value = "/by-username/{username}", method = RequestMethod.GET)
     public ResponseEntity<?> getUserMessages(@PathVariable("username") String username) {
 		User user = this.userService.getUserByUserName(username);
