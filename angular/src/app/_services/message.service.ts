@@ -18,6 +18,10 @@ export class MessageService {
     return this.http.get<Message[]>(`/api/message/by-username/${username}`)
   }
 
+  addMessage(message: Message) {
+    return this.http.post(`/api/message/create`, message);
+  }
+
   deleteMessageById(id: number) {
     return this.http.delete(`/api/message/${id}`);
   }

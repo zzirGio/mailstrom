@@ -20,12 +20,19 @@ public class Contact implements Serializable {
 	@Column(name="Name")
 	private String name;
 	
+	@Column(name="PhoneNumber")
+	private String phoneNumber;
+	
 	public long getId() {
 		return this.id;
 	}
 	
 	public String getName() {
 		return this.name;
+	}
+	
+	public String getPhoneNumber() {
+		return this.phoneNumber;
 	}
 	
 }
