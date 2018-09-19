@@ -18,6 +18,7 @@ export class MessageCreateComponent implements OnInit {
   }
 
   createMessage() {
-    this.message = new Message();
+    const userId = JSON.parse(localStorage.getItem("currentUser")).id;
+    this.message = new Message(userId);
   }
 }

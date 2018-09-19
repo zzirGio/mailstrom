@@ -21,10 +21,9 @@ public class Message implements Serializable {
 	@GeneratedValue
 	@Column(name="Id")
 	private long id;
-
-	@ManyToOne()
-	@JoinColumn(name="UserId")
-	private User user;
+	
+	@Column(name="UserId", nullable=false)
+	private long userId;
 
 	@ManyToOne()
 	@JoinColumn(name="ContactId")
@@ -33,10 +32,10 @@ public class Message implements Serializable {
 	@Column(name="Content", nullable=false)
 	private String content;
 
-	@Column(name="TimeCreated", nullable=false)
+	@Column(name="TimeCreated", insertable=false)
 	private Timestamp timeCreated;
 
-	@Column(name="TimeToBeSent")
+	@Column(name="TimeToBeSent", insertable=false)
 	private Timestamp timeToBeSent;
 
 	@Column(name="IsSent", nullable=false, columnDefinition="TINYINT(1)")
@@ -47,8 +46,8 @@ public class Message implements Serializable {
 		return this.id;
 	}
 
-	public User getUser() {
-		return this.user;
+	public long getUserId() {
+		return this.userId;
 	}
 	
 	public Contact getContact() {

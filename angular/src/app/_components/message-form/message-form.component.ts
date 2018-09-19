@@ -40,7 +40,16 @@ export class MessageFormComponent implements OnInit {
   }
 
   createNewMessage() {
-    alert("Not implemented yet.");
+    this.messageService.addMessage(this.message).subscribe(
+      data => {
+        this.alertService.success("Message created!", true);
+        this.router.navigate(["/messages"]);
+      },
+      error => {
+        console.log(error)
+        this.alertService.error("Unable to create message");
+      }
+    )
   }
 
   updateExistingMessage() {
