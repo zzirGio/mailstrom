@@ -17,6 +17,7 @@ export class MessageFormComponent implements OnInit {
   message: Message;
   @Input()
   formHeading: string;
+  minScheduleDate: Date = new Date();
 
   constructor(
     private alertService: AlertService,
@@ -26,6 +27,14 @@ export class MessageFormComponent implements OnInit {
   ) {}
 
   ngOnInit() {}
+
+  public set timeToSend(v: string) {
+    let actualParsedDate = v ? new Date(v) : new Date();
+    let normalizedParsedDate = new Date(
+      actualParsedDate.getTime() + actualParsedDate.getTimezoneOffset() * 60000
+    );
+    this.message.timeToBeSent = normalizedParsedDate;
+  }
 
   goBack() {
     this.location.back();
@@ -46,10 +55,10 @@ export class MessageFormComponent implements OnInit {
         this.router.navigate(["/messages"]);
       },
       error => {
-        console.log(error)
+        console.log(error);
         this.alertService.error("Unable to create message");
       }
-    )
+    );
   }
 
   updateExistingMessage() {

@@ -78,6 +78,7 @@ public class MessageController {
 			ObjectMapper mapper = new ObjectMapper();
 			Message updatedMessage = mapper.readValue(messageJson, Message.class);
 			message.setContent(updatedMessage.getContent());
+			message.setTimeToBeSent(updatedMessage.getTimeToBeSent());
 			this.messageService.updateMessage(message);
 		} catch (Exception e) {
 			throw new InternalServerErrorException();
