@@ -1,4 +1,4 @@
-import { Routes, RouterModule } from "@angular/router";
+import { Routes, RouterModule } from '@angular/router';
 
 import {
   LandingComponent,
@@ -10,43 +10,43 @@ import {
   UserManagementComponent,
   ResetPasswordComponent,
   MessageCreateComponent
-} from "@views";
+} from '@views';
 
-import { AuthGuard } from "@guards";
+import { AuthGuard } from '@guards';
 
 const appRoutes: Routes = [
-  { path: "", component: LandingComponent },
-  { path: "login", component: LoginComponent },
-  { path: "register", component: RegisterComponent },
-  { path: "reset-password", component: ResetPasswordComponent },
+  { path: '', component: LandingComponent },
+  { path: 'login', component: LoginComponent },
+  { path: 'register', component: RegisterComponent },
+  { path: 'reset-password', component: ResetPasswordComponent },
   {
-    path: "dashboard",
+    path: 'dashboard',
     component: DashboardComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: "messages",
+    path: 'messages',
     component: MessageListComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: "create-message",
+    path: 'create-message',
     component: MessageCreateComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: "edit-message/:id",
+    path: 'edit-message/:id',
     component: MessageEditComponent,
     canActivate: [AuthGuard]
   },
   {
-    path: "user-management",
+    path: 'user-management',
     component: UserManagementComponent,
     canActivate: [AuthGuard]
   },
 
   // otherwise redirect to home
-  { path: "**", redirectTo: "" }
+  { path: '**', redirectTo: '' }
 ];
 
 export const AppRouterModule = RouterModule.forRoot(appRoutes);
