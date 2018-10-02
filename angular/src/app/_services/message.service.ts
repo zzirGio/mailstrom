@@ -14,6 +14,10 @@ export class MessageService {
       return this.http.get<Message>(`/api/message/${id}`);
   }
 
+  getMessagesById(userId: number) {
+    return this.http.get<Message[]>(`/api/message/by-user/${userId}`)
+  }
+
   getMessagesByUsername(username: string) {
     return this.http.get<Message[]>(`/api/message/by-username/${username}`)
   }

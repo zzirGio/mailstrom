@@ -1,27 +1,30 @@
-<!-- <h1>Hi {{currentUser.username}}!</h1> -->
-<!-- <p>You're logged in with Angular 6!!</p> -->
+<div class="dashboard-page">
+    <h1>Mailstrom</h1>
 
-<!-- <p><a [routerLink]="['/login']">Logout</a></p> -->
-
-<page-content>
-    <action-content>
-        <div class="dashboard-page">
-            <h1>Mailstrom</h1>
-            <div class="row">
-                <button mat-raised-button color="primary" (click)="goToCreate()">{{ pageContent.create }}</button>
-            </div>
-            <div class="row">
-                <button mat-raised-button color="primary" (click)="goToScheduledMessages()">{{ pageContent.scheduledMessages }}</button>
-            </div>
-            <div class="row">
-                <button mat-raised-button color="primary" (click)="goToTemplates()">{{ pageContent.templates }}</button>
-            </div>
-            <div class="row">
-                <button mat-raised-button color="primary" (click)="goToManageProfile()">{{ pageContent.manageProfile }}</button>
-            </div>
-            <div class="row">
-                <button mat-raised-button color="primary" (click)="goToContacts()">{{ pageContent.contacts }}</button>
-            </div>
+    <!-- TODO: Add Recent Message | Upcoming Message tile. Do flex!! -->
+    <div fxLayout="row" fxLayoutGap="10px" fxFlexFill>
+        <div fxFlex="1 1 50%">
+            <app-recent-messages-widget></app-recent-messages-widget>
         </div>
-    </action-content>
-</page-content>
+        <div fxFlex="1 1 50%">
+            <app-upcoming-messages-widget></app-upcoming-messages-widget>
+        </div>
+    </div>
+
+        <!-- TODO: Turn buttons into quick task cards -->
+    <div class="row">
+        <button mat-raised-button color="primary" (click)="goToCreate()">{{ pageContent.create }}</button>
+    </div>
+    <div class="row">
+        <button mat-raised-button color="primary" (click)="goToScheduledMessages()">{{ pageContent.scheduledMessages }}</button>
+    </div>
+    <div class="row">
+        <button mat-raised-button color="primary" (click)="goToTemplates()">{{ pageContent.templates }}</button>
+    </div>
+    <div class="row">
+        <button mat-raised-button color="primary" (click)="goToManageProfile()">{{ pageContent.manageProfile }}</button>
+    </div>
+    <div class="row">
+        <button mat-raised-button color="primary" (click)="goToContacts()">{{ pageContent.contacts }}</button>
+    </div>
+</div>

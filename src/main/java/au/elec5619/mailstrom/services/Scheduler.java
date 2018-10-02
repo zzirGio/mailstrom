@@ -45,7 +45,7 @@ public class Scheduler {
 		System.out.println(String.format("Sending %d at %s", messages.size(), timestamp.toString()));
 		
 		sendMessage(authToken, "04XXXXXXXX", "Hello, this is a message from Mailstrom!!");
-		/*		
+		/*		TODO:
 		for(Message m : messages) {
 			// send messages
 			

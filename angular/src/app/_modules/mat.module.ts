@@ -5,7 +5,9 @@ import {
   MatCheckboxModule,
   MatNativeDateModule,
   MatSnackBarModule,
+  MatListModule
 } from "@angular/material";
+
 import { MatCardModule } from "@angular/material/card";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatFormFieldModule } from "@angular/material/form-field";
@@ -23,6 +25,7 @@ import { MatSelectModule } from "@angular/material/select";
     MatInputModule,
     MatNativeDateModule,
     MatSelectModule,
+    MatListModule,
   ],
   exports: [
     MatButtonModule,
@@ -33,6 +36,7 @@ import { MatSelectModule } from "@angular/material/select";
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatListModule,
   ],
   providers: [MatDatepickerModule]
 })

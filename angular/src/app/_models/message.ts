@@ -4,6 +4,7 @@ export class Message {
     contact: TempContact = new TempContact(this.id, "PLACEHOLDER USER");
     content: string = "";
     timeToBeSent: Date;
+    isSent: boolean;
 
     constructor(userId) {
         this.userId = userId;
