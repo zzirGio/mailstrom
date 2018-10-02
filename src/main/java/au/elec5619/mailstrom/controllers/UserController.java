@@ -1,5 +1,6 @@
 package au.elec5619.mailstrom.controllers;
 
+import java.util.Map;
 import java.util.regex.Pattern;
 
 import javax.servlet.http.HttpServletRequest;
@@ -94,20 +95,26 @@ public class UserController {
             throw new NotFoundException("User does not exist");
         }
         
-        User currentUser = null;
-        
+        Map currentUser = null;
         try {
-        	currentUser = objectMapper.readValue(userJson, User.class);
+        	currentUser = this.objectMapper.readValue(userJson, Map.class);
         } catch (Exception e) {
         	throw new InternalServerErrorException();
         }
         
         try {
-        	if(!user.getEmail().equals(currentUser.getEmail()) && this.userService.emailExists(currentUser.getEmail())) {
+        	if(!user.getEmail().equals((String)currentUser.get("email")) && this.userService.emailExists((String)currentUser.get("email"))) {
         		throw new ConflictException("Email already exists");
         	}
-        	user.setEmail(currentUser.getEmail());
-        	user.setPassword(this.passwordEncoder.encode(currentUser.getPassword()));
+        	user.setEmail((String)currentUser.get("email"));
+        	if((Boolean)currentUser.get("newPasswordChecked")) {
+        		user.setPassword(this.passwordEncoder.encode((String)currentUser.get("password")));
+        	} else {
+        		if(!this.passwordEncoder.matches((String)currentUser.get("password"), user.getPassword())) {
+        			throw new ConflictException("Incorrect Password");
+        		}
+        	}
+        	
         	userService.updateUser(user);      
 		} catch(ConflictException e) {
 			throw e;

@@ -118,7 +118,6 @@ public class Scheduler {
         
         try {
             Response response = client.newCall(request).execute();
-            System.out.println(response.body());
         } catch (IOException e) {
             e.printStackTrace();
         }
