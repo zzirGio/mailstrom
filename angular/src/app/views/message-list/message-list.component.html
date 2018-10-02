@@ -1,4 +1,5 @@
-<div class="container">
+<page-content>
+  <action-content>
     <h2>Scheduled messages</h2>
     <app-alert></app-alert>
     <div *ngIf="isLoading">
@@ -8,9 +9,8 @@
       No scheduled messages.
     </div>
     <div *ngIf="messages?.length > 0">
-    <app-message
-      *ngFor="let message of messages"
-      [message]="message">
-    </app-message>
+      <app-message *ngFor="let message of messages" [message]="message">
+      </app-message>
     </div>
-</div>
+  </action-content>
+</page-content>
