@@ -53,7 +53,8 @@ export const content = {
                 invalid: 'Email is invalid'
             },
             password: {
-                label: 'New Password',
+                labelCurrent: 'Current Password',
+                labelNew: 'New Password',
                 required: 'Password is required',
                 minlength: 'Password must be at least 8 characters'
             },

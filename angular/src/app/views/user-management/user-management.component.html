@@ -11,8 +11,10 @@
                   <div *ngIf="!form.email.errors.required && form.email.invalid">{{ pageContent.email.invalid }}</div>
               </div>
           </div>
+          <mat-checkbox [(ngModel)]="newPasswordChecked" [ngModelOptions]="{standalone: true}">Change Password?</mat-checkbox>
           <div class="form-group">
-              <label for="password">{{ pageContent.password.label }}</label>
+              <label *ngIf="!newPasswordChecked" for="password">{{ pageContent.password.labelCurrent }}</label>
+              <label *ngIf="newPasswordChecked" for="password">{{ pageContent.password.labelNew }}</label>
               <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && form.password.errors }" />
               <div *ngIf="submitted && form.password.errors" class="invalid-feedback">
                   <div *ngIf="form.password.errors.required">{{ pageContent.password.required }}</div>

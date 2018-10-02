@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
 import { MatSnackBar } from '@angular/material';
 
 import { User } from '@models';
@@ -18,6 +18,7 @@ export class UserManagementComponent implements OnInit {
   updateForm: FormGroup;
   loading = false;
   submitted = false;
+  newPasswordChecked = false;
   private user: User;
 
   constructor(
@@ -47,18 +48,16 @@ export class UserManagementComponent implements OnInit {
     }
 
     this.loading = true;
-    const updatedDetails: User = {
-      id: this.user.id,
+
+    this.userService.update2({
       email: <string> this.form.email.value,
-      username: this.user.username,
       password: this.form.password.value,
-      token: <string> this.user.token
-    }
-    this.userService.update(updatedDetails).subscribe(
+      newPasswordChecked: this.newPasswordChecked
+    }, this.user.id).subscribe(
       res => {
         this.snackBar.open(this.pageContent.submitSuccess, 'Dismiss', { duration: 3000 });
-        updatedDetails.password = '';
-        localStorage.setItem('currentUser', JSON.stringify(updatedDetails));
+        this.user.email = this.form.email.value;
+        localStorage.setItem('currentUser', JSON.stringify(this.user));
         this.router.navigate(['/dashboard']);
       }, 
       error => {
