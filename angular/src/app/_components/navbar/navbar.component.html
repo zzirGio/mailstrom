@@ -6,7 +6,7 @@
 
     <div class="collapse navbar-collapse justify-content-end"
          [ngClass]="{ 'show': navbarOpen }">
-      <ul class="navbar-nav">
+      <ul class="navbar-nav" (click)="toggleNavbar()">
         <li class="nav-item" *ngIf="authGuard.isLoggedIn()">
           <a class="nav-link" [routerLink]="['/create-message']">Create</a>
         </li>
