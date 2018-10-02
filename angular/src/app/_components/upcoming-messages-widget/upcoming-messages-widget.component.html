@@ -1,0 +1,17 @@
+<mat-card>
+  <mat-card-header>
+    <img mat-card-avatar src="assets/img/chat-bubble-blue.svg"/>
+    <mat-card-title>Upcoming</mat-card-title>
+  </mat-card-header>
+  <mat-card-content>
+    <mat-list>
+      <mat-list-item *ngFor="let message of messages">
+        <span matLine><strong>{{ message.contact.name }}</strong>: {{ message.content }} </span>
+        <small matLine> {{ message.timeToBeSent | date:'short' }} </small>
+      </mat-list-item>
+      <mat-list-item *ngIf="messages.length === 0">
+        No upcoming messages
+      </mat-list-item>
+    </mat-list>
+  </mat-card-content>
+</mat-card>

@@ -8,8 +8,11 @@ import { AppRouterModule } from '@app/app.routing';
 
 import { JwtInterceptor, ErrorInterceptor } from '@helpers';
 import { MatModule } from '@modules';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { GUARDS, COMPONENTS, SERVICES, VIEWS } from './app.declarations';
+import { RecentMessagesWidgetComponent } from './_components/recent-messages-widget/recent-messages-widget.component';
+import { UpcomingMessagesWidgetComponent } from './_components/upcoming-messages-widget/upcoming-messages-widget.component';
 
 @NgModule({
   imports: [
@@ -18,15 +21,16 @@ import { GUARDS, COMPONENTS, SERVICES, VIEWS } from './app.declarations';
       ReactiveFormsModule,
       HttpClientModule,
       AppRouterModule,
-      BrowserAnimationsModule,
       MatModule,
       FormsModule,
-    //   FlexLayoutModule,
+      FlexLayoutModule,
   ],
   declarations: [
     AppComponent,
     ...COMPONENTS,
     ...VIEWS,
+    RecentMessagesWidgetComponent,
+    UpcomingMessagesWidgetComponent,
   ],
   providers: [
     ...SERVICES,
