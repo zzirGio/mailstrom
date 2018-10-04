@@ -1,11 +1,27 @@
 .dashboard-page {
-    text-align: center;
-    width: 100%;
-    max-width: 600px;
-    margin: 60px auto;
+    max-width: 960px;
+    margin: 100px auto;
+}
 
-    button {
-        width: 100% !important;
-        margin: 10px auto !important;
+.container-flex {
+    display: flex;
+    justify-content: flex-start;
+    flex-flow: row wrap;
+
+    @media screen and (max-width: 660px) {
+        justify-content: space-around;
+    }
+
+    task-card {
+        width: 300px;
+        margin: 10px;
+    }
+
+    width: 100%;
+    
+    .widget {
+        width: 100%;
+        max-width: 460px;
+        margin: 10px;
     }
 }

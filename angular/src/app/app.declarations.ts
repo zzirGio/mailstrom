@@ -1,64 +1,45 @@
 
-import {
-    AuthGuard
-} from '@guards';
+import * as _MODULES from '@modules';
+import * as _GUARDS from '@guards';
+import * as _COMPONENTS from '@components';
+import * as _SERVICES from '@services';
+import * as _VIEWS from '@views';
 
-import {
-    AlertComponent,
-    MessageComponent,
-    MessageFormComponent,
-    NavbarComponent,
-    PageContentComponent,
-    ActionContentComponent
-} from '@components';
-
-import {
-    AlertService,
-    AuthenticationService,
-    MessageService,
-    UserService,
-} from '@services';
-
-import {
-    LandingComponent,
-    LoginComponent,
-    MessageCreateComponent,
-    MessageEditComponent,
-    MessageListComponent,
-    RegisterComponent,
-    DashboardComponent,
-    UserManagementComponent,
-    ResetPasswordComponent
-} from '@views';
+export const MODULES = [
+    _MODULES.MatModule
+];
 
 export const GUARDS = [
-    AuthGuard,
+    _GUARDS.AuthGuard
 ];
 
 export const COMPONENTS = [
-    AlertComponent,
-    MessageComponent,
-    MessageFormComponent,
-    NavbarComponent,
-    PageContentComponent,
-    ActionContentComponent,
+    _COMPONENTS.AlertComponent,
+    _COMPONENTS.MessageComponent,
+    _COMPONENTS.MessageFormComponent,
+    _COMPONENTS.NavbarComponent,
+    _COMPONENTS.PageContentComponent,
+    _COMPONENTS.ActionContentComponent,
+    _COMPONENTS.RecentMessagesWidgetComponent,
+    _COMPONENTS.UpcomingMessagesWidgetComponent,
+    _COMPONENTS.TaskCardComponent,
 ];
 
 export const SERVICES = [
-    AlertService,
-    AuthenticationService,
-    MessageService,
-    UserService,
+    _SERVICES.AlertService,
+    _SERVICES.AuthenticationService,
+    _SERVICES.MessageService,
+    _SERVICES.UserService,
 ];
 
 export const VIEWS = [
-    LandingComponent,
-    LoginComponent,
-    MessageCreateComponent,
-    MessageEditComponent,
-    MessageListComponent,
-    RegisterComponent,
-    DashboardComponent,
-    UserManagementComponent,
-    ResetPasswordComponent
+    _VIEWS.LandingComponent,
+    _VIEWS.LoginComponent,
+    _VIEWS.MessageCreateComponent,
+    _VIEWS.MessageEditComponent,
+    _VIEWS.MessageListComponent,
+    _VIEWS.RegisterComponent,
+    _VIEWS.DashboardComponent,
+    _VIEWS.UserManagementComponent,
+    _VIEWS.ResetPasswordComponent
 ];

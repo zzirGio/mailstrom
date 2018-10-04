@@ -44,7 +44,19 @@ export const content = {
             scheduledMessages: 'Scheduled Messages',
             templates: 'Templates',
             manageProfile: 'Manage Profile',
-            contacts: 'Contacts'
+            contacts: 'Contacts',
+            wantMore: {
+                title: 'Want more?',
+                description: 'Tell us what feature you want next!'
+            },
+            glyphicons: {
+                contacts: 'contacts',
+                create: 'create',
+                schedule: 'schedule',
+                settings: 'settings',
+                template: 'template',
+                speech: 'speech',
+            }
         },
         userManagement: {
             email: {
