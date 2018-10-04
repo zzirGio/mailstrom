@@ -10,9 +10,7 @@ import { JwtInterceptor, ErrorInterceptor } from '@helpers';
 import { MatModule } from '@modules';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { GUARDS, COMPONENTS, SERVICES, VIEWS } from './app.declarations';
-import { RecentMessagesWidgetComponent } from './_components/recent-messages-widget/recent-messages-widget.component';
-import { UpcomingMessagesWidgetComponent } from './_components/upcoming-messages-widget/upcoming-messages-widget.component';
+import { GUARDS, COMPONENTS, SERVICES, VIEWS, MODULES } from './app.declarations';
 
 @NgModule({
   imports: [
@@ -21,7 +19,7 @@ import { UpcomingMessagesWidgetComponent } from './_components/upcoming-messages
       ReactiveFormsModule,
       HttpClientModule,
       AppRouterModule,
-      MatModule,
+      ...MODULES,
       FormsModule,
       FlexLayoutModule,
   ],
@@ -29,8 +27,6 @@ import { UpcomingMessagesWidgetComponent } from './_components/upcoming-messages
     AppComponent,
     ...COMPONENTS,
     ...VIEWS,
-    RecentMessagesWidgetComponent,
-    UpcomingMessagesWidgetComponent,
   ],
   providers: [
     ...SERVICES,

@@ -13,6 +13,7 @@ import { content } from '@app/app.content';
 })
 export class DashboardComponent implements OnInit {
   pageContent = content.views.dashboard;
+  glyphicons = content.views.dashboard.glyphicons;
 
   constructor(private router: Router) {
   }

@@ -4,3 +4,6 @@ export * from './message-form/message-form.component';
 export * from './navbar/navbar.component';
 export * from './page-content/page-content.component';
 export * from './action-content/action-content.component';
+export * from './task-card/task-card.component';
+export * from './recent-messages-widget/recent-messages-widget.component';
+export * from './upcoming-messages-widget/upcoming-messages-widget.component';

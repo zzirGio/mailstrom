@@ -1,0 +1,44 @@
+:host {
+    height: 300px;
+    border-radius: 4px;
+    background-color: #FFFFFF;
+    border: solid 1px #0941e8;
+    box-shadow: 0px 0px 5px #0941e8;
+    text-align: center;
+    display: block;
+    cursor: pointer;
+
+    &[disabled] {
+        opacity: 0.6;
+        filter: grayscale(100%);
+        cursor: default;
+        pointer-events: none;
+    }
+}
+
+.title {
+    font-size: 24px;
+    font-weight: 500;
+    line-height: 0.67;
+    letter-spacing: normal;
+    color: #21285e;
+    padding-bottom: 16px;
+    padding-top: 19px;
+    margin: 0;
+}
+
+.description {
+    font-size: 16px;
+    text-align: center;
+    color: #6E7396;
+    margin: 0px 15px;
+}
+
+.glyphicon {
+    padding-top: 82px;
+}
+
+img {
+    width: 50px;
+    height: auto;
+}
