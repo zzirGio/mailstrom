@@ -17,6 +17,9 @@ public class Contact implements Serializable {
 	@Column(name="Id")
 	private long id;
 	
+	@Column(name="UserId", nullable=false)
+	private long userId;
+	
 	@Column(name="Name")
 	private String name;
 	
@@ -27,6 +30,10 @@ public class Contact implements Serializable {
 		return this.id;
 	}
 	
+	public long getUserId() {
+		return this.userId;
+	}
+	
 	public String getName() {
 		return this.name;
 	}
@@ -35,4 +42,11 @@ public class Contact implements Serializable {
 		return this.phoneNumber;
 	}
 	
+	public void setName(String name) {
+		this.name = name;
+	}
+	
+	public void setPhoneNumber(String phoneNumber) {
+		this.phoneNumber = phoneNumber;
+	}
 }
