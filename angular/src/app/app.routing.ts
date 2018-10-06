@@ -46,7 +46,7 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
-    path: 'templates',
+    path: 'template-management',
     component: TemplateManagementComponent,
     canActivate: [AuthGuard]
   },

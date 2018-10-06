@@ -28,7 +28,8 @@ import {
     RegisterComponent,
     DashboardComponent,
     UserManagementComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    TemplateManagementComponent
 } from '@views';
 
 export const GUARDS = [
@@ -60,5 +61,6 @@ export const VIEWS = [
     RegisterComponent,
     DashboardComponent,
     UserManagementComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    TemplateManagementComponent
 ];

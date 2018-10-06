@@ -3,6 +3,7 @@ export * from './login/login.component';
 export * from './message-create/message-create.component';
 export * from './message-edit/message-edit.component';
 export * from './message-list/message-list.component';
+export * from './template-management/template-management.component';
 export * from './register/register.component';
 export * from './dashboard/dashboard.component';
 export * from './user-management/user-management.component';
