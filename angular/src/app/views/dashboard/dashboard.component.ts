@@ -31,8 +31,8 @@ export class DashboardComponent implements OnInit {
   }
 
   goToTemplates() {
-    alert('Going to Templates! But it is not implemented yet');
-    // this.router.navigate['/**'];
+    //alert('Going to Templates! But it is not implemented yet');
+    this.router.navigate['/templates'];
   }
 
   goToManageProfile() {

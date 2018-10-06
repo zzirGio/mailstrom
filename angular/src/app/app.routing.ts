@@ -9,7 +9,8 @@ import {
   DashboardComponent,
   UserManagementComponent,
   ResetPasswordComponent,
-  MessageCreateComponent
+  MessageCreateComponent,
+  TemplateManagementComponent
 } from '@views';
 
 import { AuthGuard } from '@guards';
@@ -44,7 +45,11 @@ const appRoutes: Routes = [
     component: UserManagementComponent,
     canActivate: [AuthGuard]
   },
-
+  {
+    path: 'templates',
+    component: TemplateManagementComponent,
+    canActivate: [AuthGuard]
+  },
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];
