@@ -12,7 +12,8 @@ import {
   DashboardComponent,
   UserManagementComponent,
   ResetPasswordComponent,
-  MessageCreateComponent
+  MessageCreateComponent,
+  TemplateManagementComponent
 } from '@views';
 
 import { AuthGuard } from '@guards';
@@ -45,6 +46,11 @@ const appRoutes: Routes = [
   {
     path: 'user-management',
     component: UserManagementComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'templates',
+    component: TemplateManagementComponent,
     canActivate: [AuthGuard]
   },
   {

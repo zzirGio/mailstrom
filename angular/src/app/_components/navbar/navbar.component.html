@@ -17,7 +17,7 @@
           <a class="nav-link" [routerLink]="['/messages']">Messages</a>
         </li>
         <li class="nav-item"  *ngIf="authGuard.isLoggedIn()">
-          <a class="nav-link" [routerLink]="['/dashboard']">Templates</a>
+          <a class="nav-link" [routerLink]="['/templates']">Templates</a>
         </li>
         <li class="nav-item" *ngIf="authGuard.isLoggedIn()">
           <a class="nav-link" [routerLink]="['/contacts']">Contacts</a>
