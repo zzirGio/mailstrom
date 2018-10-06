@@ -1,0 +1,72 @@
+<!-- <h1>Hi {{currentUser.username}}!</h1> -->
+<!-- <p>You're logged in with Angular 6!!</p> -->
+
+<!-- <p><a [routerLink]="['/login']">Logout</a></p> -->
+
+<page-content>
+    <action-content>
+        <div class="template-management-page">
+            <h1 class="heading">Templates</h1>
+            <div style="float:right">
+                <button mat-raised-button color="primary" (click)="routeCreateTemplate()">+New Template</button>
+            </div>
+            <br>
+            <br>
+            <mat-card>
+                <mat-card-title>My Templates</mat-card-title>
+                <mat-nav-list>
+                    <mat-divider></mat-divider>
+                    <mat-list-item (click)="routeTemplate()">
+                        <h3 matLine> Topic 1 </h3>
+                        <p matLine>
+                            <span> Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah  </span>
+                        </p>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item>
+                        <h3 matLine> Topic 2 </h3>
+                        <p matLine>
+                            <span> blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah </span>
+                        </p>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item>
+                        <h3 matLine> Topic 3 </h3>
+                        <p matLine>
+                            <span> blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah  </span>
+                        </p>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                </mat-nav-list>
+            </mat-card>
+            <br>
+            <mat-card>
+                <mat-card-title>Public Templates</mat-card-title>
+                <mat-nav-list>
+                    <mat-divider></mat-divider>
+                    <mat-list-item>
+                        <h3 matLine> Topic 4 </h3>
+                        <p matLine>
+                            <span> blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah  </span>
+                        </p>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item>
+                        <h3 matLine> Topic 5 </h3>
+                        <p matLine>
+                            <span> blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah  </span>
+                        </p>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                    <mat-list-item>
+                        <h3 matLine> Topic 6 </h3>
+                        <p matLine>
+                            <span> blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah  </span>
+                        </p>
+                    </mat-list-item>
+                    <mat-divider></mat-divider>
+                </mat-nav-list>
+            </mat-card>
+        </div>
+    </action-content>
+</page-content>
