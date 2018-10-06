@@ -31,6 +31,8 @@ export const COMPONENTS = [
     _COMPONENTS.TaskCardComponent,
     _COMPONENTS.DeleteUserDialogContentComponent,
     _COMPONENTS.DeleteMessageDialogContentComponent,
+    _COMPONENTS.TemplateFormComponent,
+    _COMPONENTS.TemplatePanelComponent
 ];
 
 export const SERVICES = [
@@ -39,6 +41,7 @@ export const SERVICES = [
     _SERVICES.ContactService,
     _SERVICES.MessageService,
     _SERVICES.UserService,
+    _SERVICES.TemplateService
 ];
 
 export const VIEWS = [
@@ -53,5 +56,9 @@ export const VIEWS = [
     _VIEWS.RegisterComponent,
     _VIEWS.DashboardComponent,
     _VIEWS.UserManagementComponent,
-    _VIEWS.ResetPasswordComponent
+    _VIEWS.ResetPasswordComponent,
+    _VIEWS.TemplateDetailComponent,
+    _VIEWS.TemplateEditComponent,
+    _VIEWS.TemplateCreateComponent,
+    _VIEWS.TemplateManagementComponent
 ];
