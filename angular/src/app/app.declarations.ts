@@ -1,9 +1,9 @@
 
-import * as _MODULES from '@modules';
-import * as _GUARDS from '@guards';
-import * as _COMPONENTS from '@components';
-import * as _SERVICES from '@services';
-import * as _VIEWS from '@views';
+import * as _MODULES from '@app/_modules';
+import * as _GUARDS from '@app/_guards';
+import * as _COMPONENTS from '@app/_components';
+import * as _SERVICES from '@app/_services';
+import * as _VIEWS from '@app/views';
 
 export const MODULES = [
     _MODULES.MatModule
@@ -24,6 +24,7 @@ export const COMPONENTS = [
     _COMPONENTS.ActionContentComponent,
     _COMPONENTS.MessageWidgetComponent,
     _COMPONENTS.TaskCardComponent,
+    _COMPONENTS.TemplateFormComponent
 ];
 
 export const SERVICES = [
@@ -46,5 +47,9 @@ export const VIEWS = [
     _VIEWS.RegisterComponent,
     _VIEWS.DashboardComponent,
     _VIEWS.UserManagementComponent,
-    _VIEWS.ResetPasswordComponent
+    _VIEWS.ResetPasswordComponent,
+    _VIEWS.TemplateDetailComponent,
+    _VIEWS.TemplateEditComponent,
+    _VIEWS.TemplateCreateComponent,
+    _VIEWS.TemplateManagementComponent
 ];

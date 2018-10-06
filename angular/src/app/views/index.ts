@@ -10,3 +10,7 @@ export * from './reset-password/reset-password.component';
 export * from './contact-create/contact-create.component';
 export * from './contact-edit/contact-edit.component';
 export * from './contact-list/contact-list.component';
+export * from './template-detail/template-detail.component';
+export * from './template-edit/template-edit.component';
+export * from './template-create/template-create.component';
+export * from './template-management/template-management.component';
