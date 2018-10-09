@@ -36,10 +36,10 @@ public class ContactService implements IContactService {
 		final Session currentSession = this.sessionFactory.getCurrentSession();
 		Query query = currentSession.createQuery(
 				"FROM Contact WHERE UserId = :userId");
-		query.setParameter(0, id);
+		query.setParameter("userId", id);
 		return query.list();
 	}
-
+	
 	@Override
 	public void addContact(Contact contact) {
 		this.sessionFactory.getCurrentSession().save(contact);
