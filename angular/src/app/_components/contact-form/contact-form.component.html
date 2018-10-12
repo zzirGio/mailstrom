@@ -1,0 +1,11 @@
+<h2>Add new contact</h2>
+<form name="contactForm" *ngIf="contact">
+	<mat-form-field>
+		<input matInput placeholder="Name" type="text" [(ngModel)]="contact.name" required name="name">
+	</mat-form-field>
+	<mat-form-field>
+		<input matInput placeholder="Phone Number" type="text" [(ngModel)]="contact.phoneNumber" required name="phoneNumber">
+	</mat-form-field>
+	<button mat-raised-button (click)="save()" class="btn btn-primary">Save</button>
+	<button mat-raised-button (click)="goBack()">Cancel</button>
+</form>

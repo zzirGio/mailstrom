@@ -1,4 +1,6 @@
-﻿export * from './alert/alert.component';
+export * from './alert/alert.component';
+export * from './contact/contact.component'
+export * from './contact-form/contact-form.component'
 export * from './message/message.component';
 export * from './message-form/message-form.component';
 export * from './navbar/navbar.component';

@@ -1,6 +1,9 @@
 import { Routes, RouterModule } from '@angular/router';
 
 import {
+  ContactCreateComponent,
+  ContactEditComponent,
+  ContactListComponent,
   LandingComponent,
   LoginComponent,
   MessageEditComponent,
@@ -44,7 +47,22 @@ const appRoutes: Routes = [
     component: UserManagementComponent,
     canActivate: [AuthGuard]
   },
-
+  {
+  	path: 'contacts',
+  	component: ContactListComponent,
+  	canActivate: [AuthGuard]
+  },
+  {
+  	path: 'create-contact',
+  	component: ContactCreateComponent,
+  	canActivate: [AuthGuard]
+  },
+  {
+  	path: 'edit-contact/:id',
+  	component: ContactEditComponent,
+  	canActivate: [AuthGuard]
+  },
+  
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];
