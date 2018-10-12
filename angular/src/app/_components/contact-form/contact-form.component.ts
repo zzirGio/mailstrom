@@ -33,7 +33,7 @@ export class ContactFormComponent implements OnInit {
   	this.contactService.addContact(this.contact).subscribe(
   	  data => {
         this.alertService.success("Contact created!", true);
-        this.router.navigate(["/Dashboard"]);
+        this.router.navigate(["/contacts"]);
       },
       error => {
         this.alertService.error("Unable to create contact.");

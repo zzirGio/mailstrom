@@ -32,7 +32,7 @@ export class DashboardComponent implements OnInit {
   }
   
   goToContacts() {
-  	this.router.navigate(['/create-contact']);
+  	this.router.navigate(['/contacts']);
   }
 
   goToTemplates() {
