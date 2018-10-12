@@ -7,3 +7,6 @@ export * from './register/register.component';
 export * from './dashboard/dashboard.component';
 export * from './user-management/user-management.component';
 export * from './reset-password/reset-password.component';
+export * from './contact-create/contact-create.component';
+export * from './contact-edit/contact-edit.component';
+export * from './contact-list/contact-list.component';

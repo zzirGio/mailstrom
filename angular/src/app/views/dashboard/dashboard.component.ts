@@ -30,6 +30,10 @@ export class DashboardComponent implements OnInit {
   goToScheduledMessages() {
     this.router.navigate(['/messages']);
   }
+  
+  goToContacts() {
+  	this.router.navigate(['/contacts']);
+  }
 
   goToTemplates() {
     alert('Going to Templates! But it is not implemented yet');
@@ -38,10 +42,5 @@ export class DashboardComponent implements OnInit {
 
   goToManageProfile() {
     this.router.navigate(['/user-management']);
-  }
-
-  goToContacts() {
-    alert('Going to Contacts! But it is not implemented yet');
-    // this.router.navigate['/**'];
   }
 }

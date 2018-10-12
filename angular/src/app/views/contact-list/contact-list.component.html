@@ -1,0 +1,14 @@
+<page-content>
+	<action-content>
+		<h2>Contacts List</h2>
+		<app-alert></app-alert>
+		<a [routerLink]="['/create-contact']">+ ADD CONTACT</a>
+		<div *ngIf="contacts?.length === 0">
+			No contacts.
+		</div>
+		<div *ngIf="contacts?.length > 0">
+			<app-contact *ngFor="let contact of contacts" [contact]="contact">
+			</app-contact>
+    	</div>
+	</action-content>
+</page-content>

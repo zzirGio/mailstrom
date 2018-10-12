@@ -15,6 +15,8 @@ export const GUARDS = [
 
 export const COMPONENTS = [
     _COMPONENTS.AlertComponent,
+    _COMPONENTS.ContactComponent,
+    _COMPONENTS.ContactFormComponent,
     _COMPONENTS.MessageComponent,
     _COMPONENTS.MessageFormComponent,
     _COMPONENTS.NavbarComponent,
@@ -28,6 +30,7 @@ export const COMPONENTS = [
 export const SERVICES = [
     _SERVICES.AlertService,
     _SERVICES.AuthenticationService,
+    _SERVICES.ContactService,
     _SERVICES.MessageService,
     _SERVICES.UserService,
 ];
@@ -35,6 +38,9 @@ export const SERVICES = [
 export const VIEWS = [
     _VIEWS.LandingComponent,
     _VIEWS.LoginComponent,
+    _VIEWS.ContactCreateComponent,
+    _VIEWS.ContactEditComponent,
+    _VIEWS.ContactListComponent,
     _VIEWS.MessageCreateComponent,
     _VIEWS.MessageEditComponent,
     _VIEWS.MessageListComponent,
