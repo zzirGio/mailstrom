@@ -1,24 +1,14 @@
+import { Contact } from "@models";
+
 export class Message {
     id: number;
     userId: number;
-    contact: TempContact = new TempContact(this.id, "PLACEHOLDER USER");
+    contact: Contact;
     content: string = "";
     timeToBeSent: Date;
     isSent: boolean;
 
     constructor(userId) {
         this.userId = userId;
-    }
-}
-
-class TempContact {
-    id: number = 1;
-    phoneNumber: string = "1234";
-    userId: number;
-    name: string;
-
-    constructor(userId: number, name: string) {
-        this.userId = userId;
-        this.name = name;
     }
 }

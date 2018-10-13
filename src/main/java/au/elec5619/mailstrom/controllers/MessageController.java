@@ -77,6 +77,7 @@ public class MessageController {
 		try {
 			ObjectMapper mapper = new ObjectMapper();
 			Message updatedMessage = mapper.readValue(messageJson, Message.class);
+			message.setContact(updatedMessage.getContact());
 			message.setContent(updatedMessage.getContent());
 			message.setTimeToBeSent(updatedMessage.getTimeToBeSent());
 			this.messageService.updateMessage(message);

@@ -2,8 +2,8 @@ import { Component, Input, OnInit } from "@angular/core";
 import { Location } from "@angular/common";
 import { Router } from "@angular/router";
 
-import { Message } from "@app/_models";
-import { MessageService, AlertService } from "@app/_services";
+import { Contact, Message } from "@app/_models";
+import { AlertService, ContactService, MessageService } from "@app/_services";
 
 @Component({
   selector: "app-message-form",
@@ -17,16 +17,28 @@ export class MessageFormComponent implements OnInit {
   message: Message;
   @Input()
   formHeading: string;
+  contacts: Contact[] = [];
   minScheduleDate: Date = new Date();
 
   constructor(
     private alertService: AlertService,
+    private contactService: ContactService,
     private location: Location,
     private messageService: MessageService,
     private router: Router
   ) {}
 
-  ngOnInit() {}
+  ngOnInit() {
+    const currentUser = JSON.parse(localStorage.getItem("currentUser")).id;
+  	this.contactService.getContactsList(currentUser).subscribe(
+  	  data => {
+  	    this.contacts = data;
+  	  },
+  	  error => {
+  	    this.alertService.error("Unable to load contacts.");
+  	  }
+    );
+  }
 
   public set timeToSend(v: string) {
     let actualParsedDate = v ? new Date(v) : new Date();
