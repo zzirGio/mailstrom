@@ -3,8 +3,12 @@
 <mat-card *ngIf="message">
   <mat-card-content>
     <mat-form-field>
-      <mat-select placeholder="To">
-        <mat-option *ngFor="let contact of []" value="contact.id">{{ contact.name }}</mat-option>
+      <mat-select placeholder="To" [(ngModel)]="message.contact">
+        <mat-option 
+        *ngFor="let contact of this.contacts" 
+        [value]="contact">
+          {{ contact.name }}
+        </mat-option>
       </mat-select>
     </mat-form-field>
     <mat-form-field>

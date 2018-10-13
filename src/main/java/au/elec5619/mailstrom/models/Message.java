@@ -54,6 +54,10 @@ public class Message implements Serializable {
 		return this.contact;
 	}
 
+	public void setContact(Contact contact) {
+		this.contact = contact;
+	}
+
 	public String getContent() {
 		return this.content;
 	}
