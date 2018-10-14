@@ -27,7 +27,9 @@ export class MessageListComponent implements OnInit {
   getMessages() {
     this.messageService.getMessagesByUsername(this.currentUsername).subscribe(
       data => {
-        this.messages = data;
+        this.messages = data
+          .filter(d => !d.isSent)
+          .sort((a, b) => a.timeToBeSent.getTime() - b.timeToBeSent.getTime());
         this.isLoading = false;
       },
       error => {
