@@ -14,6 +14,10 @@ import { ContactService, AlertService } from "@app/_services";
 export class ContactFormComponent implements OnInit {
   @Input()
   contact: Contact;
+  @Input()
+  isEditing: boolean;
+  @Input()
+  heading: string;
   
   constructor(
   	private alertService: AlertService,
@@ -29,15 +33,34 @@ export class ContactFormComponent implements OnInit {
   }
   
   save() {
-    
-  	this.contactService.addContact(this.contact).subscribe(
-  	  data => {
-        this.alertService.success("Contact created!", true);
-        this.router.navigate(["/contacts"]);
-      },
-      error => {
-        this.alertService.error("Unable to create contact.");
-      }
-  	);
+  	if (this.isEditing) {
+  	  this.update();
+  	} else {
+  	  this.create();
+  	}
   }
+  
+  create() {
+  	  this.contactService.addContact(this.contact).subscribe(
+  	    data => {
+          this.alertService.success("Contact created!", true);
+          this.router.navigate(["/contacts"]);
+        },
+        error => {
+          this.alertService.error("Unable to create contact.");
+        }
+  	  );
+  }
+  
+  update() {
+  	  this.contactService.updateContact(this.contact).subscribe(
+  	    data => {
+  	      this.alertService.success("Contact update!", true);
+  	      this.router.navigate(["/contacts"]);
+  	    },
+  	    error => {
+  	      this.alertService.error("Unable to update contact.");
+  	    }
+  	  );
+  	}
 }

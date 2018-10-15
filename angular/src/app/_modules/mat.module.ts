@@ -11,6 +11,7 @@ import {
 import { MatCardModule } from "@angular/material/card";
 import { MatDatepickerModule } from "@angular/material/datepicker";
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from "@angular/material/input";
 import { MatSelectModule } from "@angular/material/select";
 
@@ -22,6 +23,7 @@ import { MatSelectModule } from "@angular/material/select";
     MatSnackBarModule,
     MatDatepickerModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatNativeDateModule,
     MatSelectModule,
@@ -34,6 +36,7 @@ import { MatSelectModule } from "@angular/material/select";
     MatSnackBarModule,
     MatDatepickerModule,
     MatFormFieldModule,
+    MatIconModule,
     MatInputModule,
     MatSelectModule,
     MatListModule,
