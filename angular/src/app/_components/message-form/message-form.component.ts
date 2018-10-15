@@ -18,6 +18,7 @@ export class MessageFormComponent implements OnInit {
   @Input()
   formHeading: string;
   contacts: Contact[] = [];
+  maxContentLength: number = 160;
   minScheduleDate: Date = new Date();
 
   constructor(

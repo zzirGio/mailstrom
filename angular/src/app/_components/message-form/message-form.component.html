@@ -19,7 +19,8 @@
       (ngModelChange)="timeToSend = $event">
     </mat-form-field>
     <mat-form-field>
-      <textarea matInput placeholder="Message" [(ngModel)]="message.content"></textarea>
+      <textarea matInput placeholder="Message" 
+      [(ngModel)]="message.content" [maxlength]="maxContentLength"></textarea>
     </mat-form-field>
   </mat-card-content>
   <mat-card-actions align="end">
