@@ -10,7 +10,17 @@ import { ContactService, AlertService } from '@app/_services';
 })
 export class ContactListComponent implements OnInit {
   contacts: Contact[];
-
+  filteredContacts: Contact[];
+  
+  private _searchTerm: string;
+  get searchTerm(): string {
+  	return this._searchTerm;
+  }
+  set searchTerm(term: string) {
+  	this._searchTerm = term;
+  	this.filteredContacts = this.filterContactByName(term);
+  }
+  
   constructor(
     private contactService: ContactService,
     private alertService: AlertService
@@ -22,11 +32,15 @@ export class ContactListComponent implements OnInit {
   	this.contactService.getContactsList(currentUser).subscribe(
   	  data => {
   	    this.contacts = data;
+  	    this.filteredContacts = data;
   	  },
   	  error => {
   	    this.alertService.error("Unable to load contacts list.");
   	  }
   	);
   }
-
+  
+  filterContactByName(searchString: string) {
+  	return this.contacts.filter(contact => contact.name.toLowerCase().indexOf(searchString.toLowerCase()) !== -1);
+  }
 }
