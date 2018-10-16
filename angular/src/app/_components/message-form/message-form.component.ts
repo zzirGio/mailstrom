@@ -42,11 +42,8 @@ export class MessageFormComponent implements OnInit {
   }
 
   public set timeToSend(v: string) {
-    let actualParsedDate = v ? new Date(v) : new Date();
-    let normalizedParsedDate = new Date(
-      actualParsedDate.getTime() + actualParsedDate.getTimezoneOffset() * 60000
-    );
-    this.message.timeToBeSent = normalizedParsedDate;
+    let date = v ? new Date(v) : new Date();
+    this.message.timeToBeSent = date;
   }
 
   goBack() {
