@@ -29,7 +29,11 @@ export class MessageListComponent implements OnInit {
       data => {
         this.messages = data
           .filter(d => !d.isSent)
-          .sort((a, b) => a.timeToBeSent.getTime() - b.timeToBeSent.getTime());
+          .sort(
+            (a, b) =>
+              new Date(a.timeToBeSent).getTime() -
+              new Date(b.timeToBeSent).getTime()
+          );
         this.isLoading = false;
       },
       error => {
