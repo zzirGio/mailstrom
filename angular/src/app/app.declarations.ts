@@ -22,8 +22,7 @@ export const COMPONENTS = [
     _COMPONENTS.NavbarComponent,
     _COMPONENTS.PageContentComponent,
     _COMPONENTS.ActionContentComponent,
-    _COMPONENTS.RecentMessagesWidgetComponent,
-    _COMPONENTS.UpcomingMessagesWidgetComponent,
+    _COMPONENTS.MessageWidgetComponent,
     _COMPONENTS.TaskCardComponent,
 ];
 

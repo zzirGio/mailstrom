@@ -9,7 +9,6 @@ export class TaskCardComponent {
     @Input() disabled = false;
     @Input() title = '';
     @Input() description = '';
-    @Input() routerLink = '';
     @Input() _glyphicon = '';
 
     @Input('glyphicon')
