@@ -41,13 +41,17 @@ export const content = {
         dashboard: {
             title: 'Mailstrom',
             create: 'Create',
-            scheduledMessages: 'Scheduled Messages',
+            scheduledMessages: 'Messages',
             templates: 'Templates',
             manageProfile: 'Manage Profile',
             contacts: 'Contacts',
-            wantMore: {
-                title: 'Want more?',
-                description: 'Tell us what feature you want next!'
+            recentMessages: {
+                title: 'Recent Messages',
+                placeholder: 'No recent messages...'
+            },
+            upcomingMessages: {
+                title: 'Upcoming Messages',
+                placeholder: 'No upcoming messages...'
             },
             glyphicons: {
                 contacts: 'contacts',
@@ -56,6 +60,23 @@ export const content = {
                 settings: 'settings',
                 template: 'template',
                 speech: 'speech',
+                chatBubbleBlue: 'chat-bubble-blue',
+                chatBubbleGreen: 'chat-bubble-green',
+            },
+            stats: {
+                numScheduled: {
+                    title: 'Schedule',
+                    description: 'messages scheduled'
+                },
+                numSent: {
+                    title: 'Messages',
+                    description: 'messages sent'
+                },
+                numContacts: {
+                    title: 'Contacts',
+                    description: 'total contacts'
+                },
+                na: 'N/A'
             }
         },
         userManagement: {

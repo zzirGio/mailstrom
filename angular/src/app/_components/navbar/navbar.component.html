@@ -8,6 +8,9 @@
          [ngClass]="{ 'show': navbarOpen }">
       <ul class="navbar-nav" (click)="toggleNavbar()">
         <li class="nav-item" *ngIf="authGuard.isLoggedIn()">
+          <a class="nav-link" [routerLink]="['/dashboard']">Dashboard</a>
+        </li>
+        <li class="nav-item" *ngIf="authGuard.isLoggedIn()">
           <a class="nav-link" [routerLink]="['/create-message']">Create</a>
         </li>
         <li class="nav-item" *ngIf="authGuard.isLoggedIn()">

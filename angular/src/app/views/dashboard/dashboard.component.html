@@ -1,41 +1,74 @@
 <div class="dashboard-page">
-    <div class="container-flex">
-        <app-recent-messages-widget class="widget"></app-recent-messages-widget>
-        <app-upcoming-messages-widget class="widget"></app-upcoming-messages-widget>
+    <div class="flex-container widget-container">
+        <app-message-widget class="widget"
+            [messages]='recentMessages'
+            [title]='pageContent.recentMessages.title'
+            [emptyPlaceholder]="pageContent.recentMessages.placeholder"
+            [isRecent]="true"
+            [glyphicon]="glyphicons.chatBubbleGreen">
+        </app-message-widget>
+        <app-message-widget class="widget"
+            [messages]='upcomingMessages'
+            [title]='pageContent.upcomingMessages.title'
+            [emptyPlaceholder]="pageContent.upcomingMessages.placeholder"
+            [isRecent]="true"
+            [glyphicon]="glyphicons.chatBubbleBlue">
+        </app-message-widget>
     </div>
 
-    <div class="container-flex">
-        <task-card
-            [glyphicon]="glyphicons.create"
-            [title]="pageContent.create"
-            (click)="goToCreate()">
-        </task-card>
-        <task-card
-            [glyphicon]="glyphicons.schedule"
-            [title]="pageContent.scheduledMessages"
-            (click)="goToScheduledMessages()">
-        </task-card>
-        <task-card
-            [glyphicon]="glyphicons.contacts"
-            [title]="pageContent.contacts"
-            (click)="goToContacts()">
-        </task-card>
-        <task-card
-            [glyphicon]="glyphicons.template"
-            [title]="pageContent.templates"
-            (click)="goToTemplates()">
-        </task-card>
-        <task-card
-            [glyphicon]="glyphicons.settings"
-            [title]="pageContent.manageProfile"
-            (click)="goToManageProfile()">
-        </task-card>
-        <task-card disabled="disabled"
-            [glyphicon]="glyphicons.speech"
-            [title]="pageContent.wantMore.title"
-            [description]="pageContent.wantMore.description"
-            [disabled]="true"
-            (click)="goToManageProfile()">
-        </task-card>
+    <div class="flex-container flex-wrap">
+        <div class="mat-card-container">
+            <mat-card>
+                <mat-card-header>{{ pageContent.stats.numScheduled.title }}</mat-card-header>
+                <mat-card-content>
+                    <h2 *ngIf="stats.numScheduled != -1">{{ stats.numScheduled }}</h2>
+                    <h2 *ngIf="stats.numScheduled == -1">{{ pageContent.stats.na }}</h2>
+                    <p>{{ pageContent.stats.numScheduled.description }}</p>
+                </mat-card-content>
+            </mat-card>
+            <mat-card>
+                <mat-card-header>{{ pageContent.stats.numSent.title }}</mat-card-header>
+                <mat-card-content>
+                    <h2 *ngIf="stats.numSent != -1">{{ stats.numSent }}</h2>
+                    <h2 *ngIf="stats.numSent == -1">{{ pageContent.stats.na }}</h2>
+                    <p>{{ pageContent.stats.numSent.description }}</p>
+                </mat-card-content>
+            </mat-card>            
+            <mat-card>
+                <mat-card-header>{{ pageContent.stats.numContacts.title }}</mat-card-header>
+                <mat-card-content>
+                    <h2 *ngIf="stats.numContacts != -1">{{ stats.numContacts }}</h2>
+                    <h2 *ngIf="stats.numContacts == -1">{{ pageContent.stats.na }}</h2>
+                    <p>{{ pageContent.stats.numContacts.description }}</p>
+                </mat-card-content>
+            </mat-card>
+        </div>
+        <div class="flex-container task-card-container">
+            <task-card
+                [glyphicon]="glyphicons.create"
+                [title]="pageContent.create"
+                (click)="goToCreate()">
+            </task-card>
+            <task-card
+                [glyphicon]="glyphicons.schedule"
+                [title]="pageContent.scheduledMessages"
+                (click)="goToScheduledMessages()">
+            </task-card>
+            <task-card
+                [glyphicon]="glyphicons.contacts"
+                [title]="pageContent.contacts"
+                (click)="goToContacts()">
+            </task-card>
+            <task-card
+                [glyphicon]="glyphicons.template"
+                [title]="pageContent.templates"
+                (click)="goToTemplates()">
+            </task-card>
+            <task-card
+                [glyphicon]="glyphicons.settings"
+                [title]="pageContent.manageProfile"
+                (click)="goToManageProfile()">
+            </task-card>
+        </div>
     </div>
 </div>
