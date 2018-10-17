@@ -31,13 +31,16 @@ export class MessageFormComponent implements OnInit {
 
   ngOnInit() {
     const currentUser = JSON.parse(localStorage.getItem("currentUser")).id;
-  	this.contactService.getContactsList(currentUser).subscribe(
-  	  data => {
-  	    this.contacts = data;
-  	  },
-  	  error => {
-  	    this.alertService.error("Unable to load contacts.");
-  	  }
+    this.contactService.getContactsList(currentUser).subscribe(
+      data => {
+        if (data.length == 0) {
+          this.router.navigate(["/create-contact"]);
+        }
+        this.contacts = data;
+      },
+      error => {
+        this.alertService.error("Unable to load contacts.");
+      }
     );
   }
 
