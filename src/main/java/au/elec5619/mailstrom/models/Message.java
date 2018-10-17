@@ -35,7 +35,7 @@ public class Message implements Serializable {
 	@Column(name="TimeCreated", insertable=false)
 	private Timestamp timeCreated;
 
-	@Column(name="TimeToBeSent", insertable=false)
+	@Column(name="TimeToBeSent", nullable=false)
 	private Timestamp timeToBeSent;
 
 	@Column(name="IsSent", nullable=false, columnDefinition="TINYINT(1)")
