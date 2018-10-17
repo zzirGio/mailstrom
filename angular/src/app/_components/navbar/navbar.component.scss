@@ -1,5 +1,19 @@
 #navbar {
+    background-color: #3f51b5 !important;
+    
+    .nav-link {
+        color: #ffffff;
+    }
+    
     .logout-link {
         cursor: pointer;
+    }
+
+    .navbar-brand {
+        width: 200px;
+        height: 50px;
+        background-image: url('assets/img/logo.png');
+        background-position: center; /* Center the image */
+        background-repeat: no-repeat; /* Do not repeat the image */
     }
 }
