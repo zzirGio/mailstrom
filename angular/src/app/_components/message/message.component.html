@@ -1,3 +1,4 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <mat-card *ngIf="!show">
   <mat-card-content>DELETED</mat-card-content>
 </mat-card>
@@ -10,8 +11,12 @@
     <p>{{ message.content }}</p>
   </mat-card-content>
   <mat-card-actions align="end">
-    <button mat-button (click)="edit()">EDIT</button>
-    <button mat-button (click)="delete()">DELETE</button>
+    <button mat-button (click)="edit()">
+        <i class="material-icons md-18">edit</i>
+    </button>
+    <button mat-button (click)="delete()">
+        <i class="material-icons md-18">delete</i>
+    </button>
   </mat-card-actions>
 </mat-card>
 <br>
