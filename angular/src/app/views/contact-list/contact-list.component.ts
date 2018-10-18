@@ -32,7 +32,15 @@ export class ContactListComponent implements OnInit {
   	this.contactService.getContactsList(currentUser).subscribe(
   	  data => {
   	    this.contacts = data;
-  	    this.filteredContacts = data;
+  	    this.filteredContacts = data.sort((a, b) => {
+  	    	if (a.name < b.name) {
+  	    		return -1;
+  	    	} else if ( a.name > b.name) {
+  	    		return 1;
+  	    	} else {
+  	    		return 0;
+  	    	}
+  	    });
   	  },
   	  error => {
   	    this.alertService.error("Unable to load contacts list.");
