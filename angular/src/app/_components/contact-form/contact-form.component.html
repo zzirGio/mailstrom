@@ -1,4 +1,5 @@
 <h2>{{ heading }}</h2>
+<app-alert></app-alert>
 <form name="contactForm" *ngIf="contact">
 	<mat-form-field>
 		<input matInput placeholder="Name" type="text" [(ngModel)]="contact.name" required name="name">

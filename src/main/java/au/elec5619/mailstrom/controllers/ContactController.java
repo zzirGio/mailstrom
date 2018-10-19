@@ -67,6 +67,13 @@ public class ContactController {
 		Contact contact;
 		try {
 			contact = mapper.readValue(contactJson, Contact.class);
+		} catch (Exception e) {
+			throw new InternalServerErrorException("Unable to save contact to database");
+		}
+		
+		validateContact(contact);
+		
+		try {
 			this.contactService.addContact(contact);
 		} catch (Exception e) {
 			throw new InternalServerErrorException("Unable to save contact to database");
@@ -107,5 +114,17 @@ public class ContactController {
 		
 		this.contactService.deleteContactById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
+	}
+	
+	private boolean validateContact(Contact contact) {	
+		if(contact.getName() == null || contact.getName().matches("^$") ) {
+			throw new BadRequestException("Name field empty.");
+		}
+		
+		if (!contact.getPhoneNumber().matches("^04[0-9]{8}$")) {
+			throw new BadRequestException("Phone number wrong format.");
+		}
+		
+		return true;
 	}
 }

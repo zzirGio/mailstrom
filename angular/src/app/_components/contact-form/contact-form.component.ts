@@ -47,7 +47,13 @@ export class ContactFormComponent implements OnInit {
           this.router.navigate(["/contacts"]);
         },
         error => {
-          this.alertService.error("Unable to create contact.");
+       	  if (error === "Phone number wrong format.") {
+       	  	this.alertService.error("Please enter a valid Australian phone number.");
+       	  } else if (error === "Name field empty.") {
+       	  	this.alertService.error("Name cannot be empty.");
+       	  } else {
+          	this.alertService.error("Unable to create contact.");
+       	  }
         }
   	  );
   }
