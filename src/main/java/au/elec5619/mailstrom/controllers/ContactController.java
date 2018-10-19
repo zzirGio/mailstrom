@@ -12,20 +12,24 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import au.elec5619.mailstrom.exceptions.BadRequestException;
 import au.elec5619.mailstrom.exceptions.InternalServerErrorException;
 import au.elec5619.mailstrom.exceptions.NotFoundException;
 import au.elec5619.mailstrom.models.*;
 import au.elec5619.mailstrom.services.interfaces.IContactService;
+import au.elec5619.mailstrom.services.interfaces.IMessageService;
 
 @RestController
 @RequestMapping("/api/contact")
 public class ContactController {
 
 	private IContactService contactService;
+	private IMessageService messageService;
 
 	@Autowired
-	public void setContactService(IContactService contactService) {
+	public void setContactService(IContactService contactService, IMessageService messageService) {
 		this.contactService = contactService;
+		this.messageService = messageService;
 	}
 	
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -93,6 +97,14 @@ public class ContactController {
 	
 	@RequestMapping(value="/{id}", method = RequestMethod.DELETE)                                                     
 	public ResponseEntity<?> deleteContact(@PathVariable("id") long id) {
+		Contact contact = this.contactService.getContactById(id);
+		List<Message> messages = this.messageService.getMessagesByUserId(contact.getUserId());
+		for (Message message : messages) {
+			if (message.getContact().getId() == id) {
+				throw new BadRequestException("Contact cannot be deleted due to scheduled messages.");
+			}
+		}
+		
 		this.contactService.deleteContactById(id);
 		return new ResponseEntity<>(HttpStatus.OK);
 	}
