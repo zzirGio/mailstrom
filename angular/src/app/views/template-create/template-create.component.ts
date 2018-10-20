@@ -1,5 +1,5 @@
 import { Component, OnInit } from "@angular/core";
-import { AlertService } from "@app/_services";
+import { MatModule } from '@modules';
 import { Router } from '@angular/router';
 
 @Component({
