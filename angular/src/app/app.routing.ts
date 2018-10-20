@@ -13,6 +13,7 @@ import {
   UserManagementComponent,
   ResetPasswordComponent,
   MessageCreateComponent,
+  TemplateCreateComponent,
   TemplateManagementComponent
 } from '@views';
 
@@ -49,6 +50,11 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'create-template',
+    component: TemplateCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'template-management',
     component: TemplateManagementComponent,
     canActivate: [AuthGuard]
@@ -68,7 +74,6 @@ const appRoutes: Routes = [
   	component: ContactEditComponent,
   	canActivate: [AuthGuard]
   },
-  
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];

@@ -1,5 +1,6 @@
 import { Component, OnInit } from "@angular/core";
 import { AlertService } from "@app/_services";
+import { Router } from '@angular/router';
 
 @Component({
   selector: "app-template-management",
@@ -11,6 +12,7 @@ export class TemplateManagementComponent implements OnInit {
     currentUsername: string;
   
     constructor(
+      private router: Router,
       private alertService: AlertService
     ) {}
   
@@ -18,5 +20,9 @@ export class TemplateManagementComponent implements OnInit {
       const currentUser = JSON.parse(localStorage.getItem("currentUser"));
       this.currentUsername = currentUser.username;
       this.alertService.error("Template Management Loaded");
+    }
+
+    routeNewTemplate(){
+      this.router.navigate(['/create-template']);
     }
 }

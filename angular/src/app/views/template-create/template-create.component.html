@@ -1,0 +1,33 @@
+<!-- <h1>Hi {{currentUser.username}}!</h1> -->
+<!-- <p>You're logged in with Angular 6!!</p> -->
+
+<!-- <p><a [routerLink]="['/login']">Logout</a></p> -->
+
+<page-content>
+    <action-content>
+        <div class="template-create-page">
+            <h1 class="heading">Templates</h1>
+            <mat-card>
+                <mat-card-title>Create Template</mat-card-title>
+                <mat-divider></mat-divider>
+                <br>
+                <mat-card-content>
+                    <mat-form-field>
+                        <input matInput placeholder="Title" type="text">
+                    </mat-form-field>
+                    
+                    <mat-form-field>
+                        <input matInput placeholder="Message" type="text">
+                    </mat-form-field>
+
+                    <!--NOTE: mat-slide-toggle is unavailable-->
+
+                    <mat-card-actions align="end">
+                        <button mat-button>Cancel</button>
+                        <button mat-button>Save</button>
+                    </mat-card-actions>
+            </mat-card-content>
+            </mat-card>
+        </div>
+    </action-content>
+</page-content>

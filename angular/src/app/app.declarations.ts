@@ -47,5 +47,6 @@ export const VIEWS = [
     _VIEWS.DashboardComponent,
     _VIEWS.UserManagementComponent,
     _VIEWS.ResetPasswordComponent,
+    _VIEWS.TemplateCreateComponent,
     _VIEWS.TemplateManagementComponent
 ];
