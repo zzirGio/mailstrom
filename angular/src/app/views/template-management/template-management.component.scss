@@ -4,20 +4,9 @@
         width: 100%;
         max-width: 600px;
     }
-    .template-thumbnail {
-        width: 250px;
-        height: 250px;
-        margin: 5px;
-        background-color: grey;
-        display: inline-block;
-    }
     .template-thumbnail-container {
         overflow: scroll;
         width: 1250px;
         width: 100%;
-    }
-    button {
-        width: 100%;
-        margin: 10px auto;
     }
 }
