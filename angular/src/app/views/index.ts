@@ -4,6 +4,7 @@ export * from '@app/views/message-create/message-create.component';
 export * from '@app/views/message-edit/message-edit.component';
 export * from '@app/views/message-list/message-list.component';
 export * from '@app/views/template-detail/template-detail.component';
+export * from '@app/views/template-edit/template-edit.component';
 export * from '@app/views/template-create/template-create.component';
 export * from '@app/views/template-management/template-management.component';
 export * from '@app/views/register/register.component';

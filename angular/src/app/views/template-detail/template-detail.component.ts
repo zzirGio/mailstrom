@@ -27,7 +27,7 @@ export class TemplateDetailComponent implements OnInit {
     }
 
     edit(){
-
+      this.router.navigate(['/edit-template/0']);
     }
 
     delete(){

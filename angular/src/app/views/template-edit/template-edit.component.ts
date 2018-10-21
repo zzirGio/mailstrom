@@ -3,13 +3,13 @@ import { MatModule } from '@app/_modules';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: "app-template-create",
-  templateUrl: "./template-create.component.html",
-  styleUrls: ["./template-create.component.scss"]
+  selector: "app-template-edit",
+  templateUrl: "./template-edit.component.html",
+  styleUrls: ["./template-edit.component.scss"]
 })
-export class TemplateCreateComponent implements OnInit {
+export class TemplateEditComponent implements OnInit {
     isLoading: boolean = true;
-    formHeading: string = "Create Template";
+    formHeading: string = "Edit Template";
 
     constructor(
     ) {}

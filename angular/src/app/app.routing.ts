@@ -14,6 +14,7 @@ import {
   ResetPasswordComponent,
   MessageCreateComponent,
   TemplateDetailComponent,
+  TemplateEditComponent,
   TemplateCreateComponent,
   TemplateManagementComponent
 } from '@app/views';
@@ -53,6 +54,11 @@ const appRoutes: Routes = [
   {
     path: 'template/:id',
     component: TemplateDetailComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-template/:id',
+    component: TemplateEditComponent,
     canActivate: [AuthGuard]
   },
   {

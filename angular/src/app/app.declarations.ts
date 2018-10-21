@@ -24,6 +24,7 @@ export const COMPONENTS = [
     _COMPONENTS.ActionContentComponent,
     _COMPONENTS.MessageWidgetComponent,
     _COMPONENTS.TaskCardComponent,
+    _COMPONENTS.TemplateFormComponent
 ];
 
 export const SERVICES = [
@@ -48,6 +49,7 @@ export const VIEWS = [
     _VIEWS.UserManagementComponent,
     _VIEWS.ResetPasswordComponent,
     _VIEWS.TemplateDetailComponent,
+    _VIEWS.TemplateEditComponent,
     _VIEWS.TemplateCreateComponent,
     _VIEWS.TemplateManagementComponent
 ];
