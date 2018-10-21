@@ -1,8 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { Router } from '@angular/router';
 
-import { Contact } from '@models';
-import { AlertService, ContactService } from '@app/_services';
+import { Contact, Message } from '@models';
+import { AlertService, ContactService, MessageService } from '@app/_services';
 
 @Component({
   selector: 'app-contact',
@@ -13,10 +13,12 @@ import { AlertService, ContactService } from '@app/_services';
 export class ContactComponent implements OnInit {
   @Input()
   contact: Contact;
+  messages: Message[];
 
   constructor(
   	private alertService: AlertService,
     private contactService: ContactService,
+    private messageService: MessageService,
     private router: Router
   ) { }
 
@@ -27,15 +29,19 @@ export class ContactComponent implements OnInit {
   }
   
   delete() {
-   this.contactService.deleteContact(this.contact.id).subscribe(
-     data => {
-   	   this.alertService.success("Contact deleted.", true);
-   	   location.reload(true);
-   	},
-   	error => {
-   	  this.alertService.error("Unable to delete contact.");
-   	}
-   );
+	this.contactService.deleteContact(this.contact.id).subscribe(
+  		data => {
+  			this.alertService.success("Contact deleted.", true);
+  			location.reload(true);
+  			console.log("data: " + data);
+		},
+		error => {
+			if (error === "Contact cannot be deleted due to scheduled messages.") {
+				this.alertService.error(error);
+			} else {
+				this.alertService.error("Unable to delete contact.");
+			}
+		}
+	);
   }
-
 }
