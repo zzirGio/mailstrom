@@ -7,13 +7,35 @@
     <action-content>
         <div class="template-detail-page">
             <h1 class="heading">Templates</h1>
+            
+            <button mat-raised-button color="primary" (click)="routeTemplateManagement()">
+                <i class="material-icons md-18">arrow_back</i>
+            </button>
+            <br>
+            <br>
+
             <mat-card>
-                <mat-card-title>Template</mat-card-title>
+                <mat-card-title>Template Title</mat-card-title>
                 <mat-divider></mat-divider>
                 <br>
                 <mat-card-content>
-                    
+                    <p>blah blah blah
+                        blah blah
+                        blah blah
+                        blah
+                    </p>
                 </mat-card-content>
+                <mat-divider></mat-divider>
+                <br>
+                <button mat-button (click)="send()">
+                    <i class="material-icons md-18">send</i>
+                </button>
+                <button mat-button (click)="edit()">
+                    <i class="material-icons md-18">edit</i>
+                </button>
+                <button mat-button (click)="delete()">
+                    <i class="material-icons md-18">delete</i>
+                </button>
             </mat-card>
         </div>
     </action-content>

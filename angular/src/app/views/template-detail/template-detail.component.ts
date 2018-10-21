@@ -11,9 +11,26 @@ export class TemplateDetailComponent implements OnInit {
     isLoading: boolean = true;
 
     constructor(
+      private router: Router
     ) {}
   
     ngOnInit() {
       
+    }
+
+    routeTemplateManagement(){
+      this.router.navigate(['/template-management']);
+    }
+    
+    send(){
+
+    }
+
+    edit(){
+
+    }
+
+    delete(){
+
     }
 }
