@@ -22,7 +22,11 @@ export class TemplateManagementComponent implements OnInit {
       this.alertService.error("Template Management Loaded");
     }
 
-    routeNewTemplate(){
+    routeCreateTemplate(){
       this.router.navigate(['/create-template']);
+    }
+    
+    routeTemplate(){
+      this.router.navigate(['/template/0']);
     }
 }

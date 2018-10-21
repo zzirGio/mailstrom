@@ -8,7 +8,7 @@
         <div class="template-management-page">
             <h1 class="heading">Templates</h1>
             <div style="float:right">
-                <button mat-raised-button color="primary" (click)="routeNewTemplate()">+New Template</button>
+                <button mat-raised-button color="primary" (click)="routeCreateTemplate()">+New Template</button>
             </div>
             <br>
             <br>
@@ -16,7 +16,7 @@
                 <mat-card-title>My Templates</mat-card-title>
                 <mat-nav-list>
                     <mat-divider></mat-divider>
-                    <mat-list-item>
+                    <mat-list-item (click)="routeTemplate()">
                         <h3 matLine> Topic 1 </h3>
                         <p matLine>
                             <span> Blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah blah  </span>
