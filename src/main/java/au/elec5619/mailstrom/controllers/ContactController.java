@@ -71,7 +71,11 @@ public class ContactController {
 			throw new InternalServerErrorException("Unable to save contact to database");
 		}
 		
-		validateContact(contact);
+		try {
+			this.contactService.addContact(contact);
+		} catch (Exception e) {
+			throw new InternalServerErrorException("Unable to save contact to database");
+		}
 		
 		try {
 			this.contactService.addContact(contact);
