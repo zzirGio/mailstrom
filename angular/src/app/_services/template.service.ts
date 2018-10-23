@@ -7,6 +7,8 @@ import { Template } from '@app/_models';
   providedIn: 'root'
 })
 export class TemplateService {
+  templateToSend: string;
+  templateSent: boolean = true;
 
   constructor(private http: HttpClient) { }
   
@@ -32,5 +34,19 @@ export class TemplateService {
   
   deleteTemplate(id: number) {
   	return this.http.delete(`/api/template/${id}`);
+  }
+
+  setTemplateToSend(templateText: string){
+    this.templateSent = false;
+    this.templateToSend = templateText;
+  }
+
+  getTemplateToSend(){
+    if (!this.templateSent) {
+      this.templateSent = true;
+      return this.templateToSend;
+    }else{
+      return null;
+    }
   }
 }

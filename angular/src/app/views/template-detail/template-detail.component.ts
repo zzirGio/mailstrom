@@ -48,6 +48,7 @@ export class TemplateDetailComponent implements OnInit {
     }
     
     send(){
+      this.templateService.setTemplateToSend(this.template.content);
       this.router.navigate(['/create-message']);
     }
 
