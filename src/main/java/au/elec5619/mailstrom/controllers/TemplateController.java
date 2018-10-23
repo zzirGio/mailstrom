@@ -73,7 +73,6 @@ public class TemplateController {
 		ObjectMapper mapper = new ObjectMapper();
 		Template template;
 		try {
-			System.out.println(templateJson);
 			template = mapper.readValue(templateJson, Template.class);
 			this.templateService.addTemplate(template);
 		} catch (Exception e) {
