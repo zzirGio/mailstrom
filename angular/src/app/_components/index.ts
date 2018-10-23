@@ -3,6 +3,8 @@ export * from './contact/contact.component'
 export * from './contact-form/contact-form.component'
 export * from './message/message.component';
 export * from './message-form/message-form.component';
+export * from './template-form/template-form.component';
+export * from './template-panel/template-panel.component';
 export * from './navbar/navbar.component';
 export * from './page-content/page-content.component';
 export * from './action-content/action-content.component';
