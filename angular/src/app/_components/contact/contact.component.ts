@@ -33,7 +33,6 @@ export class ContactComponent implements OnInit {
   		data => {
   			this.alertService.success("Contact deleted.", true);
   			location.reload(true);
-  			console.log("data: " + data);
 		},
 		error => {
 			if (error === "Contact cannot be deleted due to scheduled messages.") {
