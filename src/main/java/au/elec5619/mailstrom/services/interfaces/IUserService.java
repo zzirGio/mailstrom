@@ -6,6 +6,11 @@ import org.springframework.security.core.userdetails.UserDetails;
 
 import au.elec5619.mailstrom.models.User;;
 
+/**
+ * @author Sergio Mesina
+ *
+ * Interface for UserService
+ */
 public interface IUserService {
 	
 	User getUserById(long id);
