@@ -1,16 +1,24 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 <mat-card>
-	<mat-card-header>
-		<mat-card-title>{{ contact.name }}</mat-card-title>
-	</mat-card-header>
-	<mat-card-content>
-		<p>{{ contact.phoneNumber }}</p>
-		<button mat-button (click)="edit()">
-			EDIT
-			<!-- <mat-icon>contact-edit</mat-icon> -->
-		</button>
-		<button mat-button (click)="delete()">
-			DELETE
-			<!-- <mat-icon>contact-delete</mat-icon> -->
-		</button>
-	</mat-card-content>
+	<div class="row">
+		<div class="col-md-3 profile">
+				<i class="material-icons md-64 contour">person</i>
+		</div>
+		<div class="col-md-6 content">
+		<mat-card-header>
+			<mat-card-title>{{ contact.name }}</mat-card-title>
+		</mat-card-header>
+		<mat-card-content>
+			<p>{{ contact.phoneNumber }}</p>
+		</mat-card-content>
+		</div>
+		<div class="col-md-3 control">
+			<button mat-icon-button (click)="edit()">
+				<i class="material-icons">create</i>
+			</button>
+			<button mat-icon-button (click)="delete()">
+				<i class="material-icons">delete</i>
+			</button>
+		</div>
+	</div>
 </mat-card>
