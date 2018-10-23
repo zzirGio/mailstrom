@@ -1,6 +1,7 @@
 package au.elec5619.mailstrom.services;
 
 import java.sql.Timestamp;
+import java.util.Calendar;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -49,6 +50,27 @@ public class MessageService implements IMessageService {
 				"FROM Message WHERE TimeToBeSent = :timestamp"
 				);
 		query.setParameter("timestamp", timestamp);
+		return query.list();
+	}
+	
+	@SuppressWarnings("unchecked")
+	@Override
+	public List<Message> getMessagesToBeSent(Timestamp timestamp) {
+		final Session currentSession = this.sessionFactory.getCurrentSession();
+		
+		
+	    Calendar cal = Calendar.getInstance();
+	    cal.setTimeInMillis(timestamp.getTime());
+	 
+	    // subtract 30 seconds
+	    cal.add(Calendar.SECOND, -30);
+	    Timestamp start = new Timestamp(cal.getTime().getTime());
+		
+		Query query = currentSession.createQuery(
+				"FROM Message WHERE TimeToBeSent >= :start AND TimeToBeSent <= :end"
+				);
+		query.setParameter("start", start);
+		query.setParameter("end", timestamp);
 		return query.list();
 	}
 
