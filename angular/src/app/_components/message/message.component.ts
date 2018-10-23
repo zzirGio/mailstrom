@@ -1,7 +1,8 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { MatSnackBar } from '@angular/material';
+import { MatDialog, MatSnackBar } from "@angular/material";
 import { Router } from "@angular/router";
 
+import { DeleteMessageDialogContentComponent } from "@components";
 import { Message } from "@models";
 import { AlertService, MessageService } from "@app/_services";
 
@@ -16,6 +17,7 @@ export class MessageComponent implements OnInit {
   show: boolean = true;
 
   constructor(
+    private dialog: MatDialog,
     private router: Router,
     private alertService: AlertService,
     private messageService: MessageService,
@@ -28,10 +30,19 @@ export class MessageComponent implements OnInit {
     this.router.navigate([`/edit-message/${this.message.id}`]);
   }
 
-  delete() {
+  deleteButtonClicked() {
+    const dialogRef = this.dialog.open(DeleteMessageDialogContentComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this._deleteMessage();
+      }
+    });
+  }
+
+  _deleteMessage() {
     this.messageService.deleteMessageById(this.message.id).subscribe(
       data => {
-        this.snackBar.open("Message deleted.", 'Dismiss', { duration: 3000 });
+        this.snackBar.open("Message deleted.", "Dismiss", { duration: 3000 });
         this.show = false;
       },
       error => {

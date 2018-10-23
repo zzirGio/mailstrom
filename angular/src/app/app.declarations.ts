@@ -6,7 +6,8 @@ import * as _SERVICES from '@services';
 import * as _VIEWS from '@views';
 
 export const ENTRY_COMPONENTS = [
-    _COMPONENTS.DeleteUserDialogContentComponent
+    _COMPONENTS.DeleteUserDialogContentComponent,
+    _COMPONENTS.DeleteMessageDialogContentComponent,
 ];
 
 export const MODULES = [
@@ -29,6 +30,7 @@ export const COMPONENTS = [
     _COMPONENTS.MessageWidgetComponent,
     _COMPONENTS.TaskCardComponent,
     _COMPONENTS.DeleteUserDialogContentComponent,
+    _COMPONENTS.DeleteMessageDialogContentComponent,
 ];
 
 export const SERVICES = [
