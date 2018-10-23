@@ -1,7 +1,11 @@
 package au.elec5619.mailstrom.services;
 
 import java.sql.Timestamp;
+<<<<<<< HEAD
 import java.util.Calendar;
+=======
+import java.util.Date;
+>>>>>>> Throw error when setting message schedule time in the past
 import java.util.List;
 
 import org.hibernate.Query;
@@ -11,6 +15,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import au.elec5619.mailstrom.exceptions.BadRequestException;
 import au.elec5619.mailstrom.models.Message;
 import au.elec5619.mailstrom.services.interfaces.IMessageService;
 
@@ -23,6 +28,12 @@ public class MessageService implements IMessageService {
 	@Autowired
 	public void setSessionFactory(SessionFactory sessionFactory) {
 		this.sessionFactory = sessionFactory;
+	}
+	
+	public void validateScheduledTime(Message message) {
+		if (message.getTimeToBeSent().getTime() < new Date().getTime()) {
+			throw new BadRequestException("Cannot schedule message in the past.");
+		}
 	}
 
 	@Override
@@ -76,6 +87,7 @@ public class MessageService implements IMessageService {
 
 	@Override
 	public void addMessage(Message message) {
+		this.validateScheduledTime(message);
 		this.sessionFactory.getCurrentSession().save(message);
 	}
 
@@ -88,6 +100,7 @@ public class MessageService implements IMessageService {
 
 	@Override
 	public void updateMessage(Message message) {
+		this.validateScheduledTime(message);
 		final Session currentSession = this.sessionFactory.getCurrentSession();
 		currentSession.merge(message);
 	}
