@@ -2,10 +2,14 @@ package au.elec5619.mailstrom.services;
 
 import java.sql.Timestamp;
 <<<<<<< HEAD
+<<<<<<< HEAD
 import java.util.Calendar;
 =======
 import java.util.Date;
 >>>>>>> Throw error when setting message schedule time in the past
+=======
+import java.util.Date;
+>>>>>>> 24b70ed7b43b4bff01253e044f1b1c40ed63aa72
 import java.util.List;
 
 import org.hibernate.Query;
