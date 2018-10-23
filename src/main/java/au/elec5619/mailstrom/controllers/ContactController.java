@@ -72,9 +72,9 @@ public class ContactController {
 		}
 		
 		try {
-			this.contactService.addContact(contact);
+			validateContact(contact);
 		} catch (Exception e) {
-			throw new InternalServerErrorException("Unable to save contact to database");
+			throw new BadRequestException(e.getMessage());
 		}
 		
 		try {
