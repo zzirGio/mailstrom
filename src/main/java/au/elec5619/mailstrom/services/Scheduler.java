@@ -37,22 +37,18 @@ public class Scheduler {
 	}
 	
 	public void sendMessage() {
-		String authToken = getOAuth2Token();	
+		String authToken = getOAuth2Token();
 
 		Timestamp timestamp = new Timestamp(new Date().getTime());
-		List<Message> messages = messageService.getMessagesByTimestamp(timestamp);
+		List<Message> messages = messageService.getMessagesToBeSent(timestamp);
 		
 		System.out.println(String.format("Sending %d at %s", messages.size(), timestamp.toString()));
-		
-		sendMessage(authToken, "04XXXXXXXX", "Hello, this is a message from Mailstrom!!");
-		/*		TODO:
+
 		for(Message m : messages) {
 			// send messages
-			
 			sendMessage(authToken, m.getContact().getPhoneNumber(), m.getContent());
 			m.setIsSent(true);
 		}
-		 */
 	}
 	
 	private String getOAuth2Token() {
@@ -106,7 +102,7 @@ public class Scheduler {
                 "  \"body\":\""+content+"\",\n" +
                 "  \"validity\":\"60\",\n" +
                 "  \"priority\":false,\n" +
-                "  \"notifyURL\":\"https://jsonplaceholder.typicode.com/posts\"\n" +
+                "  \"notifyURL\":\"\"\n" +
                 "}\n";
 
         RequestBody body = RequestBody.create(MEDIA_TYPE, json);

@@ -27,7 +27,7 @@
 	
 	<!-- for Scheduler -->
 	<task:scheduled-tasks scheduler="myScheduler">
-        <task:scheduled ref="scheduler" method="sendMessage" cron="0 0/15 * * * ?" />
+        <task:scheduled ref="scheduler" method="sendMessage" cron="0 0/1 * * * ?" />
     </task:scheduled-tasks>
  
     <task:scheduler id="myScheduler"/>

@@ -10,6 +10,7 @@ public interface IMessageService {
 	Message getMessageById(long id);
 	List<Message> getMessagesByUserId(long id);
 	List<Message> getMessagesByTimestamp(Timestamp timestamp);
+	List<Message> getMessagesToBeSent(Timestamp timestamp);
 	void addMessage(Message message);
 	void updateMessage(Message message);
 	void deleteMessageById(long id);
