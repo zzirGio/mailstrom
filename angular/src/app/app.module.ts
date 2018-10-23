@@ -10,7 +10,7 @@ import { JwtInterceptor, ErrorInterceptor } from '@helpers';
 import { MatModule } from '@modules';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { GUARDS, COMPONENTS, SERVICES, VIEWS, MODULES } from './app.declarations';
+import { GUARDS, COMPONENTS, SERVICES, VIEWS, MODULES, ENTRY_COMPONENTS } from './app.declarations';
 
 @NgModule({
   imports: [
@@ -27,6 +27,9 @@ import { GUARDS, COMPONENTS, SERVICES, VIEWS, MODULES } from './app.declarations
     AppComponent,
     ...COMPONENTS,
     ...VIEWS,
+  ],
+  entryComponents: [
+    ...ENTRY_COMPONENTS
   ],
   providers: [
     ...SERVICES,

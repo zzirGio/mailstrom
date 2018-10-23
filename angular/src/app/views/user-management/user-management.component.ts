@@ -1,10 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators, FormControl } from '@angular/forms';
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar, MatDialog } from '@angular/material';
 
 import { User } from '@models';
-import { UserService } from '@services';
+import { UserService, AuthenticationService } from '@services';
+import { DeleteUserDialogContentComponent } from '@components';
 
 import { content } from '@app/app.content';
 
@@ -25,7 +26,10 @@ export class UserManagementComponent implements OnInit {
     private formBuilder: FormBuilder,
     private router: Router,
     private userService: UserService,
-    private snackBar: MatSnackBar) { }
+    private snackBar: MatSnackBar,
+    private authenticatioNService: AuthenticationService,
+    private dialog: MatDialog
+  ) { }
 
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('currentUser'));
@@ -63,6 +67,25 @@ export class UserManagementComponent implements OnInit {
       error => {
         this.snackBar.open(error, 'Dismiss', { duration: 3000 });
         this.loading = false;
+    });
+  }
+
+  deleteAccount() {
+    const dialogRef = this.dialog.open(DeleteUserDialogContentComponent);
+
+    dialogRef.afterClosed().subscribe(result => {
+      if(result) {
+        this.userService.delete(this.user.id).subscribe(
+          res => {
+            this.authenticatioNService.logout();
+            this.router.navigate(['/']);
+          },
+          error => {
+            this.snackBar.open(error, 'Dismiss', { duration: 3000 });
+            this.loading = false;
+          }
+        );
+      }
     });
   }
 }
