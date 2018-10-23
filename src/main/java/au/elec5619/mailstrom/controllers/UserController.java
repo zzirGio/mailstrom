@@ -27,6 +27,12 @@ import au.elec5619.mailstrom.security.TokenHelper;
 import au.elec5619.mailstrom.services.interfaces.IRequestAuthorizationService;
 import au.elec5619.mailstrom.services.interfaces.IUserService;
 
+/**
+ * @author Sergio Mesina
+ *
+ * Contains methods which handle User API requests from the client.
+ *
+ */
 @RestController
 @RequestMapping("/api/user")
 public class UserController {
@@ -48,9 +54,13 @@ public class UserController {
 		this.passwordEncoder = new BCryptPasswordEncoder();
 	}
 	
+    /**
+     * @param id - User ID
+     * @param request - HttpServletRequest object to ensure request is Authorized
+     * @return User data as json
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<?> getUser(@PathVariable("id") long id, HttpServletRequest request, 
-            HttpServletResponse response) {
+    public ResponseEntity<?> getUser(@PathVariable("id") long id, HttpServletRequest request) {
     	
     	String error = requestAuthorizationService.isRequestAuthorized(request);
     	
@@ -79,6 +89,12 @@ public class UserController {
         return new ResponseEntity<>(result, httpHeaders, HttpStatus.OK);
     }
     
+    /**
+     * @param id - User ID
+     * @param userJson - Data to update the current user.
+     * @param request - HttpServletRequest object to ensure request is Authorized
+     * @return HTTP Status Code
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public ResponseEntity<?> updateUser(@PathVariable("id") long id, @RequestBody String userJson, HttpServletRequest request) {
 
@@ -125,6 +141,11 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
     
+    /**
+     * @param id - User ID
+     * @param request - HttpServletRequest object to ensure request is Authorized
+     * @return HTTP Status Code
+     */
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     public ResponseEntity<?> deleteUser(@PathVariable("id") long id, HttpServletRequest request) {
 
@@ -152,6 +173,10 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
     
+    /**
+     * @param userJson - contains username, email and new password
+     * @return HTTP Status
+     */
     @RequestMapping(value = "/resetpassword", method=RequestMethod.POST)
     public ResponseEntity<?> resetPassword(@RequestBody String userJson) {
     	
@@ -183,6 +208,10 @@ public class UserController {
         return new ResponseEntity<>(HttpStatus.OK);
     }
     
+    /**
+     * @param userJson - contains username and password used to authenticate user
+     * @return User data including a JWT token
+     */
     @RequestMapping(value="/authenticate", method=RequestMethod.POST)
     public ResponseEntity<?> authenticate(@RequestBody String userJson) {
     	
@@ -220,6 +249,11 @@ public class UserController {
         return new ResponseEntity<>(result, httpHeaders, HttpStatus.OK);
     }
 	
+    /**
+     * @param userJson - contains username, email, and password used to create a new User record
+     * @return HTTP Status
+     * @throws Exception
+     */
     @RequestMapping(value="/register", method=RequestMethod.POST)
     public ResponseEntity<?> register(@RequestBody String userJson) throws Exception {
     	
@@ -254,6 +288,10 @@ public class UserController {
     	return new ResponseEntity<>(HttpStatus.CREATED);
     }
     
+    /**
+     * @param userName - String to represent the user's username
+     * @return - true if username is valid
+     */
     private boolean isValidUserName(String userName) {
     	
     	String trimmed = StringUtils.strip(userName);
@@ -273,6 +311,10 @@ public class UserController {
     	return true;
     }
     
+    /**
+     * @param password - String used to represent user's password
+     * @return - true if password is valid
+     */
     private boolean isValidPassword(String password) {
     	
     	if(StringUtils.isEmpty(password)) {
@@ -286,6 +328,10 @@ public class UserController {
     	return true;
     }
     
+    /**
+     * @param email - String used to represent user's email
+     * @return - true if password is valid 
+     */
     private boolean isValidEmail(String email) {
     	String emailRegex = "^[a-zA-Z0-9_+&*-]+(?:\\."+ 
                 "[a-zA-Z0-9_+&*-]+)*@" + 

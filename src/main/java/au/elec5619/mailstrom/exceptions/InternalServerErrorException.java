@@ -1,5 +1,9 @@
 package au.elec5619.mailstrom.exceptions;
 
+/**
+ * @author Sergio Mesina
+ *
+ */
 public class InternalServerErrorException extends RuntimeException {
 
 	public InternalServerErrorException() {

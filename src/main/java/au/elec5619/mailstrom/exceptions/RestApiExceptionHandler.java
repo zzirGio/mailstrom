@@ -15,6 +15,12 @@ import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.method.annotation.ResponseEntityExceptionHandler;
 
+/**
+ * @author Sergio Mesina
+ * 
+ * Handles exceptions in API Controllers and send them back to the client.
+ *
+ */
 @ControllerAdvice
 public class RestApiExceptionHandler extends ResponseEntityExceptionHandler { 
 	

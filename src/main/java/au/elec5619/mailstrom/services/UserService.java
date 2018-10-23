@@ -19,6 +19,11 @@ import au.elec5619.mailstrom.services.interfaces.IUserService;
 import au.elec5619.mailstrom.exceptions.NotFoundException;
 import au.elec5619.mailstrom.models.User;
 
+/**
+ * @author Sergio Mesina
+ *
+ * Reusable service for handling user models.
+ */
 @Service
 @Transactional
 public class UserService implements IUserService {
