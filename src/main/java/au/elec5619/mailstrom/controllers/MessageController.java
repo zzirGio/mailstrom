@@ -1,5 +1,6 @@
 package au.elec5619.mailstrom.controllers;
 
+import java.util.Date;
 import java.util.List;
 
 import org.codehaus.jackson.map.ObjectMapper;
@@ -36,6 +37,12 @@ public class MessageController {
 		this.userService = userService;
 	}
 
+	public void validateScheduledTime(Message message) {
+		if (message.getTimeToBeSent().getTime() < new Date().getTime()) {
+			throw new BadRequestException("Cannot schedule message in the past.");
+		}
+	}
+
 	@RequestMapping(value = "/{id}", method = RequestMethod.GET)
 	public ResponseEntity<?> getMessage(@PathVariable("id") long id) {
 		Message message = this.messageService.getMessageById(id);
@@ -58,7 +65,8 @@ public class MessageController {
 		ObjectMapper mapper = new ObjectMapper();
     	Message message;
     	try {
-        	message = mapper.readValue(messageJson, Message.class);
+			message = mapper.readValue(messageJson, Message.class);
+			this.validateScheduledTime(message);
         	this.messageService.addMessage(message);
     	} catch (BadRequestException e) {
     		throw e;
@@ -83,6 +91,7 @@ public class MessageController {
 			message.setContact(updatedMessage.getContact());
 			message.setContent(updatedMessage.getContent());
 			message.setTimeToBeSent(updatedMessage.getTimeToBeSent());
+			this.validateScheduledTime(message);
 			this.messageService.updateMessage(message);
 		} catch (BadRequestException e) {
     		throw e;
