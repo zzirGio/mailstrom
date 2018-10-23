@@ -21,6 +21,7 @@ export class MessageFormComponent implements OnInit {
   contacts: Contact[] = [];
   maxContentLength: number = 160;
   minScheduleDate: Date = new Date();
+  isWaitingOnDatabase: boolean = false;
 
   constructor(
     private alertService: AlertService,
@@ -56,6 +57,7 @@ export class MessageFormComponent implements OnInit {
   }
 
   save() {
+    this.isWaitingOnDatabase = true;
     if (this.isUpdatingExistingMessage) {
       this.updateExistingMessage();
     } else {
@@ -71,6 +73,7 @@ export class MessageFormComponent implements OnInit {
       },
       error => {
         this.alertService.error(error);
+        this.isWaitingOnDatabase = false;
       }
     );
   }
@@ -83,6 +86,7 @@ export class MessageFormComponent implements OnInit {
       },
       error => {
         this.alertService.error(error);
+        this.isWaitingOnDatabase = false;
       }
     );
   }
