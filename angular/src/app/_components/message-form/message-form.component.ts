@@ -1,6 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Location } from "@angular/common";
-import { MatSnackBar } from '@angular/material';
+import { MatSnackBar } from "@angular/material";
 import { Router } from "@angular/router";
 
 import { Contact, Message } from "@app/_models";
@@ -37,7 +37,10 @@ export class MessageFormComponent implements OnInit {
     this.contactService.getContactsList(currentUser).subscribe(
       data => {
         if (data.length == 0) {
-          this.router.navigate(["/create-contact"]);
+          this.alertService.error(
+            "You have no contacts. Get started by creating a contact."
+          );
+          this.isWaitingOnDatabase = true;
         }
         this.contacts = data;
       },
@@ -68,7 +71,7 @@ export class MessageFormComponent implements OnInit {
   createNewMessage() {
     this.messageService.addMessage(this.message).subscribe(
       data => {
-        this.snackBar.open("Message created!", 'Dismiss', { duration: 3000 });
+        this.snackBar.open("Message created!", "Dismiss", { duration: 3000 });
         this.router.navigate(["/messages"]);
       },
       error => {
@@ -81,7 +84,7 @@ export class MessageFormComponent implements OnInit {
   updateExistingMessage() {
     this.messageService.updateMessage(this.message).subscribe(
       data => {
-        this.snackBar.open("Message updated.", 'Dismiss', { duration: 3000 });
+        this.snackBar.open("Message updated.", "Dismiss", { duration: 3000 });
         this.router.navigate(["/messages"]);
       },
       error => {
