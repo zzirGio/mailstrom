@@ -48,7 +48,7 @@ export class TemplateFormComponent implements OnInit, OnChanges {
   }
 
   save() {
-    if (this.template.title.length > 0 && this.template.content.length > 0){
+    if (this.template.title && this.template.content){
       if (this.isEditing) {
         this.updateTemplate();
       } else {
