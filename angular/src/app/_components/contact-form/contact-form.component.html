@@ -4,14 +4,14 @@
 	<form [formGroup]="contactForm" *ngIf="contact">
 		<mat-form-field class="form-group">
 			<input matInput placeholder="Name" type="text" required formControlName="name" class="form-control"
-				[ngClass]="{ 'is-invalid': submitted && f.name.errors }">
+				[ngClass]="{ 'is-invalid': submitted && f.name.errors }" value="{{ contact.name }}">
 	        <div *ngIf="submitted && f.name.errors?.required" class="invalid-feedback">>Name is required.</div>
 		</mat-form-field>
 		<mat-form-field class="form-group">
 			<input matInput placeholder="Phone Number" type="text" required formControlName="phoneNumber" class="form-control"
-				[ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }">
-	       	<div *ngIf="submitted && f.phoneNumber.errors.required">Phone number is required.</div>
-	       	<div *ngIf="!f.phoneNumber.errors.required && f.phoneNumber.errors.pattern" class="invalid-feedback">Phone number has to be valid Australian number.</div>
+				[ngClass]="{ 'is-invalid': submitted && f.phoneNumber.errors }" value="{{ contact.phoneNumber }}">
+	       	<div *ngIf="submitted && f.phoneNumber.errors?.required">Phone number is required.</div>
+	       	<div *ngIf="!f.phoneNumber.errors?.required && f.phoneNumber.errors?.pattern" class="invalid-feedback">Phone number has to be valid Australian number.</div>
 		</mat-form-field>
 		<div class="button-container">
 			<button mat-raised-button (click)="save()" class="btn btn-primary">Save</button>
