@@ -25,8 +25,8 @@ export class ContactEditComponent implements OnInit {
   getContact() {
     const id = +this.route.snapshot.paramMap.get('id');
     this.contactService.getContactById(id).subscribe(
-      contact => {
-        this.contact = contact;
+      data => {
+        this.contact = data;
       },
       error => {
         this.alertService.error("Unable to get contact for update.");

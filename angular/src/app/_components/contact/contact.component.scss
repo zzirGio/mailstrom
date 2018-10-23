@@ -1,0 +1,29 @@
+mat-card {
+	padding: 5px;
+	margin: 20px 0px;
+}
+
+mat-card-content {
+	text-align: left;
+	margin: 0px 0px 0px 8px;
+	color: darkgray;
+}
+
+mat-card-header mat-card-title {
+	font-size: 20pt;
+	margin-bottom: 10px;
+}
+
+.material-icons.md-64 { 
+	font-size: 64px;
+}
+
+.profile {
+	text-align: center;
+	padding-top: 10px;
+}
+
+.contour {
+	background-color: #3F51B5;
+	color: white;
+}
