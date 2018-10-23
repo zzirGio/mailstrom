@@ -12,7 +12,11 @@ import {
   DashboardComponent,
   UserManagementComponent,
   ResetPasswordComponent,
-  MessageCreateComponent
+  MessageCreateComponent,
+  TemplateDetailComponent,
+  TemplateEditComponent,
+  TemplateCreateComponent,
+  TemplateManagementComponent
 } from '@views';
 
 import { AuthGuard } from '@guards';
@@ -48,6 +52,26 @@ const appRoutes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'template/:id',
+    component: TemplateDetailComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'edit-template/:id',
+    component: TemplateEditComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'create-template',
+    component: TemplateCreateComponent,
+    canActivate: [AuthGuard]
+  },
+  {
+    path: 'template-management',
+    component: TemplateManagementComponent,
+    canActivate: [AuthGuard]
+  },
+  {
   	path: 'contacts',
   	component: ContactListComponent,
   	canActivate: [AuthGuard]
@@ -62,7 +86,6 @@ const appRoutes: Routes = [
   	component: ContactEditComponent,
   	canActivate: [AuthGuard]
   },
-  
   // otherwise redirect to home
   { path: '**', redirectTo: '' }
 ];

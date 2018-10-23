@@ -31,6 +31,7 @@ export const COMPONENTS = [
     _COMPONENTS.TaskCardComponent,
     _COMPONENTS.DeleteUserDialogContentComponent,
     _COMPONENTS.DeleteMessageDialogContentComponent,
+    _COMPONENTS.TemplateFormComponent
 ];
 
 export const SERVICES = [

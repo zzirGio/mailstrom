@@ -1,0 +1,36 @@
+import { Component, OnInit } from "@angular/core";
+import { MatModule } from '@app/_modules';
+import { Router } from '@angular/router';
+
+@Component({
+  selector: "app-template",
+  templateUrl: "./template-detail.component.html",
+  styleUrls: ["./template-detail.component.scss"]
+})
+export class TemplateDetailComponent implements OnInit {
+    isLoading: boolean = true;
+
+    constructor(
+      private router: Router
+    ) {}
+  
+    ngOnInit() {
+      
+    }
+
+    routeTemplateManagement(){
+      this.router.navigate(['/template-management']);
+    }
+    
+    send(){
+
+    }
+
+    edit(){
+      this.router.navigate(['/edit-template/0']);
+    }
+
+    delete(){
+
+    }
+}
