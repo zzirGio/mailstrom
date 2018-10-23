@@ -14,4 +14,5 @@ public interface IMessageService {
 	void addMessage(Message message);
 	void updateMessage(Message message);
 	void deleteMessageById(long id);
+	void setMessageSent(Message message, boolean isSent);
 }
