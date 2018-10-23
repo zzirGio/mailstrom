@@ -27,5 +27,7 @@
               <a [routerLink]="['/dashboard']" mat-raised-button>{{ pageContent.cancel }}</a>
           </div>
       </form>
+
+      <button mat-raised-button id="delete-btn" class="btn btn-danger" (click)="deleteAccount()">Delete Account</button>
   </action-content>
 </page-content>

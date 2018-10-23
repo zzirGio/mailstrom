@@ -5,6 +5,10 @@ import * as _COMPONENTS from '@components';
 import * as _SERVICES from '@services';
 import * as _VIEWS from '@views';
 
+export const ENTRY_COMPONENTS = [
+    _COMPONENTS.DeleteUserDialogContentComponent
+];
+
 export const MODULES = [
     _MODULES.MatModule
 ];
@@ -24,6 +28,7 @@ export const COMPONENTS = [
     _COMPONENTS.ActionContentComponent,
     _COMPONENTS.MessageWidgetComponent,
     _COMPONENTS.TaskCardComponent,
+    _COMPONENTS.DeleteUserDialogContentComponent,
 ];
 
 export const SERVICES = [

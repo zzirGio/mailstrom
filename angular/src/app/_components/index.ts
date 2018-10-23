@@ -8,3 +8,4 @@ export * from './page-content/page-content.component';
 export * from './action-content/action-content.component';
 export * from './task-card/task-card.component';
 export * from './message-widget/message-widget.component';
+export * from './dialog/dialog-content.component';
