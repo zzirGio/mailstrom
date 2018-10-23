@@ -12,6 +12,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
+import au.elec5619.mailstrom.exceptions.BadRequestException;
 import au.elec5619.mailstrom.exceptions.InternalServerErrorException;
 import au.elec5619.mailstrom.exceptions.NotFoundException;
 import au.elec5619.mailstrom.models.*;
@@ -59,7 +60,9 @@ public class MessageController {
     	try {
         	message = mapper.readValue(messageJson, Message.class);
         	this.messageService.addMessage(message);
-    	} catch (Exception e) {
+    	} catch (BadRequestException e) {
+    		throw e;
+		} catch (Exception e) {
     		throw new InternalServerErrorException("Unable to save message to database");
     	}
     	return new ResponseEntity<>(HttpStatus.CREATED);
@@ -81,8 +84,10 @@ public class MessageController {
 			message.setContent(updatedMessage.getContent());
 			message.setTimeToBeSent(updatedMessage.getTimeToBeSent());
 			this.messageService.updateMessage(message);
+		} catch (BadRequestException e) {
+    		throw e;
 		} catch (Exception e) {
-			throw new InternalServerErrorException();
+			throw new InternalServerErrorException("Unable to update message in database");
 		}
 		return new ResponseEntity<>(HttpStatus.OK);
 	}

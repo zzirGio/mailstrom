@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from "@angular/core";
 import { Location } from "@angular/common";
+import { MatSnackBar } from '@angular/material';
 import { Router } from "@angular/router";
 
 import { Contact, Message } from "@app/_models";
@@ -20,13 +21,15 @@ export class MessageFormComponent implements OnInit {
   contacts: Contact[] = [];
   maxContentLength: number = 160;
   minScheduleDate: Date = new Date();
+  isWaitingOnDatabase: boolean = false;
 
   constructor(
     private alertService: AlertService,
     private contactService: ContactService,
     private location: Location,
     private messageService: MessageService,
-    private router: Router
+    private router: Router,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {
@@ -54,6 +57,7 @@ export class MessageFormComponent implements OnInit {
   }
 
   save() {
+    this.isWaitingOnDatabase = true;
     if (this.isUpdatingExistingMessage) {
       this.updateExistingMessage();
     } else {
@@ -64,12 +68,12 @@ export class MessageFormComponent implements OnInit {
   createNewMessage() {
     this.messageService.addMessage(this.message).subscribe(
       data => {
-        this.alertService.success("Message created!", true);
+        this.snackBar.open("Message created!", 'Dismiss', { duration: 3000 });
         this.router.navigate(["/messages"]);
       },
       error => {
-        console.log(error);
-        this.alertService.error("Unable to create message");
+        this.alertService.error(error);
+        this.isWaitingOnDatabase = false;
       }
     );
   }
@@ -77,11 +81,12 @@ export class MessageFormComponent implements OnInit {
   updateExistingMessage() {
     this.messageService.updateMessage(this.message).subscribe(
       data => {
-        this.alertService.success("Message updated.", true);
+        this.snackBar.open("Message updated.", 'Dismiss', { duration: 3000 });
         this.router.navigate(["/messages"]);
       },
       error => {
-        this.alertService.error("Unable to update message");
+        this.alertService.error(error);
+        this.isWaitingOnDatabase = false;
       }
     );
   }

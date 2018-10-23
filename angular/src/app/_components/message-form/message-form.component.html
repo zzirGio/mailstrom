@@ -25,6 +25,8 @@
   </mat-card-content>
   <mat-card-actions align="end">
     <button mat-button (click)="goBack()">Cancel</button>
-    <button mat-button (click)="save()">Save and schedule</button>
+    <button mat-button (click)="save()" [disabled]="this.isWaitingOnDatabase">
+      Save and schedule
+    </button>
   </mat-card-actions>
 </mat-card>

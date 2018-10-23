@@ -1,4 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
+import { MatSnackBar } from '@angular/material';
 import { Router } from "@angular/router";
 
 import { Message } from "@models";
@@ -17,7 +18,8 @@ export class MessageComponent implements OnInit {
   constructor(
     private router: Router,
     private alertService: AlertService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private snackBar: MatSnackBar
   ) {}
 
   ngOnInit() {}
@@ -29,7 +31,7 @@ export class MessageComponent implements OnInit {
   delete() {
     this.messageService.deleteMessageById(this.message.id).subscribe(
       data => {
-        this.alertService.success("Message deleted.");
+        this.snackBar.open("Message deleted.", 'Dismiss', { duration: 3000 });
         this.show = false;
       },
       error => {
