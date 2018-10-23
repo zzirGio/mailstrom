@@ -47,7 +47,7 @@ public class Scheduler {
 		for(Message m : messages) {
 			// send messages
 			sendMessage(authToken, m.getContact().getPhoneNumber(), m.getContent());
-			m.setIsSent(true);
+			messageService.setMessageSent(m, true);
 		}
 	}
 	

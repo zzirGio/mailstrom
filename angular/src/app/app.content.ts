@@ -66,7 +66,7 @@ export const content = {
             stats: {
                 numScheduled: {
                     title: 'Schedule',
-                    description: 'messages scheduled'
+                    description: 'total messages scheduled'
                 },
                 numSent: {
                     title: 'Messages',

@@ -75,7 +75,7 @@ public class MessageService implements IMessageService {
 	    Timestamp start = new Timestamp(cal.getTime().getTime());
 		
 		Query query = currentSession.createQuery(
-				"FROM Message WHERE TimeToBeSent >= :start AND TimeToBeSent <= :end"
+				"FROM Message WHERE TimeToBeSent >= :start AND TimeToBeSent <= :end AND IsSent = 0"
 				);
 		query.setParameter("start", start);
 		query.setParameter("end", timestamp);
@@ -100,5 +100,11 @@ public class MessageService implements IMessageService {
 		this.validateScheduledTime(message);
 		final Session currentSession = this.sessionFactory.getCurrentSession();
 		currentSession.merge(message);
+	}
+	
+	@Override
+	public void setMessageSent(Message message, boolean isSent) {
+		message.setIsSent(isSent);
+		this.updateMessage(message);
 	}
 }
