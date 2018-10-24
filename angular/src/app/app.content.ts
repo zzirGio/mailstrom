@@ -76,6 +76,10 @@ export const content = {
                     title: 'Contacts',
                     description: 'total contacts'
                 },
+                numTemplates: {
+                    title: 'Templates',
+                    description: 'total templates'
+                },
                 na: 'N/A'
             }
         },
