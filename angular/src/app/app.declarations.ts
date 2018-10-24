@@ -8,6 +8,7 @@ import * as _VIEWS from '@views';
 export const ENTRY_COMPONENTS = [
     _COMPONENTS.DeleteUserDialogContentComponent,
     _COMPONENTS.DeleteMessageDialogContentComponent,
+    _COMPONENTS.DeleteContactDialogContentComponent,
 ];
 
 export const MODULES = [
@@ -31,6 +32,7 @@ export const COMPONENTS = [
     _COMPONENTS.TaskCardComponent,
     _COMPONENTS.DeleteUserDialogContentComponent,
     _COMPONENTS.DeleteMessageDialogContentComponent,
+    _COMPONENTS.DeleteContactDialogContentComponent,
     _COMPONENTS.TemplateFormComponent,
     _COMPONENTS.TemplatePanelComponent
 ];

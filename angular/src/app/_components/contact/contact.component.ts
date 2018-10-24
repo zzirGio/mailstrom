@@ -1,6 +1,8 @@
 import { Component, OnInit, Input } from '@angular/core';
+import { MatDialog, MatSnackBar } from "@angular/material";
 import { Router } from '@angular/router';
 
+import { DeleteContactDialogContentComponent } from "@components";
 import { Contact, Message } from '@models';
 import { AlertService, ContactService, MessageService } from '@app/_services';
 
@@ -16,9 +18,11 @@ export class ContactComponent implements OnInit {
   messages: Message[];
 
   constructor(
+  	private dialog: MatDialog,
   	private alertService: AlertService,
     private contactService: ContactService,
     private messageService: MessageService,
+    private snackBar: MatSnackBar,
     private router: Router
   ) { }
 
@@ -28,10 +32,19 @@ export class ContactComponent implements OnInit {
    this.router.navigate([`/edit-contact/${this.contact.id}`]);
   }
   
-  delete() {
+  deleteButtonClicked() {
+    const dialogRef = this.dialog.open(DeleteContactDialogContentComponent);
+    dialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this._delete();
+      }
+    });
+  }
+  
+  _delete() {
 	this.contactService.deleteContact(this.contact.id).subscribe(
   		data => {
-  			this.alertService.success("Contact deleted.", true);
+  			this.snackBar.open("Contact deleted.", "Dismiss", { duration: 3000 });
   			location.reload(true);
 		},
 		error => {
