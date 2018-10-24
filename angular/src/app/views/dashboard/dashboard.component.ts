@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { User, Message } from '@models'
-import { ContactService, MessageService } from '@services';
+import { ContactService, MessageService, TemplateService } from '@services';
 
 import { content } from '@app/app.content';
 
@@ -21,11 +21,13 @@ export class DashboardComponent implements OnInit {
     numScheduled: -1,
     numSent: -1,
     numContacts: -1,
+    numTemplates: -1
   };
 
   constructor(
     private messageService: MessageService,
     private contactService: ContactService,
+    private templateService: TemplateService,
     private router: Router) {
   }
 
@@ -43,7 +45,7 @@ export class DashboardComponent implements OnInit {
     );
     
     this.messageService.getMessagesById(userId).subscribe(
-      data =>{
+      data => {
         this.messages = data;
         this.stats.numScheduled = data.length;
         this.recentMessages = this._sortMessages(this.messages, true);
@@ -53,6 +55,12 @@ export class DashboardComponent implements OnInit {
       },
       error => {
         console.log(error)
+      }
+    );
+
+    this.templateService.getTemplatesList(userId).subscribe(
+      data => {
+        this.stats.numTemplates = data.length;
       }
     );
   }

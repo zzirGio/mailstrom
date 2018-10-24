@@ -42,6 +42,14 @@
                     <p>{{ pageContent.stats.numContacts.description }}</p>
                 </mat-card-content>
             </mat-card>
+            <mat-card>
+                <mat-card-header>{{ pageContent.stats.numTemplates.title }}</mat-card-header>
+                <mat-card-content>
+                    <h2 *ngIf="stats.numContacts != -1">{{ stats.numTemplates }}</h2>
+                    <h2 *ngIf="stats.numContacts == -1">{{ pageContent.stats.na }}</h2>
+                    <p>{{ pageContent.stats.numTemplates.description }}</p>
+                </mat-card-content>
+            </mat-card>
         </div>
         <div class="flex-container task-card-container">
             <task-card
