@@ -21,8 +21,7 @@ import { GUARDS, COMPONENTS, SERVICES, VIEWS, MODULES, ENTRY_COMPONENTS } from '
       AppRouterModule,
       ...MODULES,
       FormsModule,
-      FlexLayoutModule,
-      MatSlideToggleModule
+      FlexLayoutModule
   ],
   declarations: [
     AppComponent,
