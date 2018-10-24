@@ -3,7 +3,7 @@
 		<h2>Contacts List</h2>
 		<app-alert></app-alert>
 		<div class="form-group">
-			<input type="text" class="form-control" placeholder="Search By Name" stylel="width:300px;" [(ngModel)]="searchTerm"/>
+			<input type="text" class="form-control" placeholder="Search By Name" style="width:300px;" [(ngModel)]="searchTerm"/>
 		</div>
 		<a mat-link [routerLink]="['/create-contact']">+ ADD CONTACT</a>
 		<div *ngIf="contacts?.length === 0">
