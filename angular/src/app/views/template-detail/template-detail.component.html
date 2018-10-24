@@ -1,11 +1,6 @@
-<!-- <h1>Hi {{currentUser.username}}!</h1> -->
-<!-- <p>You're logged in with Angular 6!!</p> -->
-
-<!-- <p><a [routerLink]="['/login']">Logout</a></p> -->
-
 <page-content>
     <action-content>
-        <div class="template-detail-page">
+        <div *ngIf="template" class="template-detail-page">
             <h1 class="heading">Templates</h1>
             
             <button mat-raised-button color="primary" (click)="routeTemplateManagement()">
@@ -15,25 +10,21 @@
             <br>
 
             <mat-card>
-                <mat-card-title>Template Title</mat-card-title>
+                <mat-card-title> {{ template.title }} </mat-card-title>
                 <mat-divider></mat-divider>
                 <br>
                 <mat-card-content>
-                    <p>blah blah blah
-                        blah blah
-                        blah blah
-                        blah
-                    </p>
+                    <p> {{ template.content }} </p>
                 </mat-card-content>
                 <mat-divider></mat-divider>
                 <br>
                 <button mat-button (click)="send()">
                     <i class="material-icons md-18">send</i>
                 </button>
-                <button mat-button (click)="edit()">
+                <button *ngIf="template.userId == currentUserId" mat-button (click)="edit()">
                     <i class="material-icons md-18">edit</i>
                 </button>
-                <button mat-button (click)="delete()">
+                <button *ngIf="template.userId == currentUserId" mat-button (click)="delete()">
                     <i class="material-icons md-18">delete</i>
                 </button>
             </mat-card>

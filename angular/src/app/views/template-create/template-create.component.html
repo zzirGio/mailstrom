@@ -1,12 +1,6 @@
-<!-- <h1>Hi {{currentUser.username}}!</h1> -->
-<!-- <p>You're logged in with Angular 6!!</p> -->
-
-<!-- <p><a [routerLink]="['/login']">Logout</a></p> -->
-
 <page-content>
     <action-content>
-        <div class="template-create-page">
-            <app-template-form [formHeading]="formHeading" [isEditing]="false"></app-template-form>
-            </div>
+        <app-template-form [formHeading]="formHeading" [isEditing]="false" [template]="template">
+        </app-template-form>
     </action-content>
 </page-content>

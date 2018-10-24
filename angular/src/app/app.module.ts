@@ -11,7 +11,6 @@ import { MatModule } from '@modules';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
 import { GUARDS, COMPONENTS, SERVICES, VIEWS, MODULES, ENTRY_COMPONENTS } from './app.declarations';
-import { MatSlideToggleModule } from '@angular/material';
 
 @NgModule({
   imports: [
@@ -22,8 +21,7 @@ import { MatSlideToggleModule } from '@angular/material';
       AppRouterModule,
       ...MODULES,
       FormsModule,
-      FlexLayoutModule,
-      MatSlideToggleModule
+      FlexLayoutModule
   ],
   declarations: [
     AppComponent,

@@ -1,23 +1,28 @@
 <h1 class="heading">Templates</h1>
-<mat-card>
-    <mat-card-title>{{ formHeading }}</mat-card-title>
-    <mat-divider></mat-divider>
-    <br>
-    <mat-card-content>
-        <mat-form-field>
-            <input matInput placeholder="Title" type="text">
-        </mat-form-field>
-        
-        <mat-form-field>
-            <input matInput placeholder="Message" type="text">
-        </mat-form-field>
-
+<ng-container *ngIf="template">
+    <mat-card>
+        <mat-card-title>{{ formHeading }}</mat-card-title>
+        <mat-divider></mat-divider>
         <br>
-        <mat-slide-toggle>Public</mat-slide-toggle>
+        <mat-card-content>
+            <mat-form-field>
+                <input matInput required placeholder="Title" type="text"
+                [(ngModel)]="template.title" [maxlength]="maxTitleLength">
+            </mat-form-field>
+            
+            <mat-form-field>
+                <textarea matInput required placeholder="Message" type="text"
+                [(ngModel)]="template.content" [maxlength]="maxContentLength"></textarea>
+            </mat-form-field>
 
-        <mat-card-actions align="end">
-            <button mat-button (click)="cancel()">Cancel</button>
-            <button mat-button (click)="save()">Save</button>
-        </mat-card-actions>
-    </mat-card-content>
-</mat-card>
+            <br>
+            <mat-slide-toggle [(ngModel)]="template.isPublic">Public</mat-slide-toggle>
+
+            <mat-card-actions align="end">
+                <button mat-button (click)="cancel()">Cancel</button>
+                <button *ngIf="isEditing" mat-button (click)="revert()">Revert</button>
+                <button mat-button (click)="save()">Save</button>
+            </mat-card-actions>
+        </mat-card-content>
+    </mat-card>
+</ng-container>

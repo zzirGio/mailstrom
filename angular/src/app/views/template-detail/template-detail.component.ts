@@ -1,6 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { MatModule } from '@app/_modules';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
+import { TemplateService, AlertService } from "@app/_services";
+
+import { Template } from "@app/_models";
+
 
 @Component({
   selector: "app-template",
@@ -9,13 +12,35 @@ import { Router } from '@angular/router';
 })
 export class TemplateDetailComponent implements OnInit {
     isLoading: boolean = true;
+    template: Template;
+    currentUserId: Number;
 
     constructor(
-      private router: Router
+      private activatedRoute: ActivatedRoute,
+      private router: Router,
+      private templateService: TemplateService,
+      private alertService: AlertService
     ) {}
   
     ngOnInit() {
-      
+      const currentUser = JSON.parse(localStorage.getItem("currentUser"));
+      this.currentUserId = currentUser.id;
+
+      this.getTemplate();
+    }
+
+    getTemplate(){
+      const id = +this.activatedRoute.snapshot.paramMap.get('id');
+      this.templateService.getTemplateById(id).subscribe(
+        data => {
+          this.template = data;
+          this.isLoading = false;
+        },
+        error => {
+          this.alertService.error("Unable to load template.");
+          this.isLoading = false;
+        }
+      );
     }
 
     routeTemplateManagement(){
@@ -23,14 +48,27 @@ export class TemplateDetailComponent implements OnInit {
     }
     
     send(){
-
+      this.templateService.setTemplateToSend(this.template.content);
+      this.router.navigate(['/create-message']);
     }
 
     edit(){
-      this.router.navigate(['/edit-template/0']);
+      if (this.template.userId == this.currentUserId){
+        this.router.navigate(['/edit-template/' + this.template.id]);
+      }
     }
 
     delete(){
-
+      if (this.template.userId == this.currentUserId){
+        const id = +this.activatedRoute.snapshot.paramMap.get('id');
+        this.templateService.deleteTemplate(id).subscribe(
+          data => {
+            this.router.navigate(['/template-management']);
+          },
+          error => {
+            this.alertService.error("Unable to delete template.");
+          } 
+        );
+      }
     }
 }
