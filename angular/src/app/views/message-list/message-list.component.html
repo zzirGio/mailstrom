@@ -2,6 +2,10 @@
   <action-content>
     <h2>Scheduled messages</h2>
     <app-alert></app-alert>
+    <div class="form-group">
+        <input type="text" class="form-control" placeholder="Search By Name" 
+        [(ngModel)]="searchTerm"/>
+      </div>
     <div *ngIf="isLoading">
       Loading...
     </div>
@@ -9,7 +13,10 @@
       No scheduled messages.
     </div>
     <div *ngIf="messages?.length > 0">
-      <app-message *ngFor="let message of messages" [message]="message">
+      <div *ngIf="filteredMessages?.length === 0">
+        No results.
+      </div>
+      <app-message *ngFor="let message of filteredMessages" [message]="message">
       </app-message>
     </div>
   </action-content>

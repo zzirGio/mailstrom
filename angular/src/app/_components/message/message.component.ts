@@ -4,7 +4,7 @@ import { Router } from "@angular/router";
 
 import { DeleteMessageDialogContentComponent } from "../dialog/dialog-content.component";
 import { Message } from "@models";
-import { AlertService, MessageService } from "@app/_services";
+import { AlertService, MessageService } from "@services";
 
 @Component({
   selector: "app-message",
@@ -14,7 +14,7 @@ import { AlertService, MessageService } from "@app/_services";
 export class MessageComponent implements OnInit {
   @Input()
   message: Message;
-  show: boolean = true;
+  messageDeleted: boolean = false;
 
   constructor(
     private dialog: MatDialog,
@@ -26,7 +26,7 @@ export class MessageComponent implements OnInit {
 
   ngOnInit() {}
 
-  edit() {
+  editButtonClicked() {
     this.router.navigate([`/edit-message/${this.message.id}`]);
   }
 
@@ -43,7 +43,7 @@ export class MessageComponent implements OnInit {
     this.messageService.deleteMessageById(this.message.id).subscribe(
       data => {
         this.snackBar.open("Message deleted.", "Dismiss", { duration: 3000 });
-        this.show = false;
+        this.messageDeleted = true;
       },
       error => {
         this.alertService.error("Unable to delete message.");
