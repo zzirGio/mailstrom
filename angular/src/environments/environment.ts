@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  apiUrl: 'http://mailstrom-be.ap-southeast-2.elasticbeanstalk.com:8080/mailstrom-1.0'
 };
 
 /*

@@ -6,7 +6,7 @@ import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { AppComponent } from '@app/app.component';
 import { AppRouterModule } from '@app/app.routing';
 
-import { JwtInterceptor, ErrorInterceptor } from '@helpers';
+import { JwtInterceptor, ErrorInterceptor, ApiHttpInterceptor } from '@helpers';
 import { MatModule } from '@modules';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
@@ -35,6 +35,7 @@ import { GUARDS, COMPONENTS, SERVICES, VIEWS, MODULES, ENTRY_COMPONENTS } from '
     ...SERVICES,
       { provide: HTTP_INTERCEPTORS, useClass: JwtInterceptor, multi: true },
       { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
+      { provide: HTTP_INTERCEPTORS, useClass: ApiHttpInterceptor, multi: true },
   ],
   bootstrap: [AppComponent]
 })

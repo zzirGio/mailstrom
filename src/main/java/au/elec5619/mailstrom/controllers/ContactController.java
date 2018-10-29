@@ -6,6 +6,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,6 +20,7 @@ import au.elec5619.mailstrom.models.*;
 import au.elec5619.mailstrom.services.interfaces.IContactService;
 import au.elec5619.mailstrom.services.interfaces.IMessageService;
 
+@CrossOrigin
 @RestController
 @RequestMapping("/api/contact")
 public class ContactController {
