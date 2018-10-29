@@ -40,8 +40,8 @@ CREATE TABLE IF NOT EXISTS `mailstrom`.`Contact` (
   CONSTRAINT `fk_Contact_User`
     FOREIGN KEY (`UserId`)
     REFERENCES `mailstrom`.`User` (`Id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -64,13 +64,13 @@ CREATE TABLE IF NOT EXISTS `mailstrom`.`Message` (
   CONSTRAINT `fk_Message_User`
     FOREIGN KEY (`UserId`)
     REFERENCES `mailstrom`.`User` (`Id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_Message_Contact`
     FOREIGN KEY (`ContactId`)
     REFERENCES `mailstrom`.`Contact` (`Id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
@@ -104,13 +104,13 @@ CREATE TABLE IF NOT EXISTS `mailstrom`.`MessageTemplate` (
   CONSTRAINT `fk_MessageTemplate_User`
     FOREIGN KEY (`UserId`)
     REFERENCES `mailstrom`.`User` (`Id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_MessageTemplate_Category`
     FOREIGN KEY (`CategoryId`)
     REFERENCES `mailstrom`.`Category` (`Id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 
