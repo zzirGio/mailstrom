@@ -2,7 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { MatDialog, MatSnackBar } from "@angular/material";
 import { Router } from '@angular/router';
 
-import { DeleteContactDialogContentComponent } from "../../_components/dialog/dialog-content.component";
+import { DeleteContactDialogContentComponent } from "@components";
 import { Contact, Message } from '@models';
 import { AlertService, ContactService, MessageService } from '@app/_services';
 
