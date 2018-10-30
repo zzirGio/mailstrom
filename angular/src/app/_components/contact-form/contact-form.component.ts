@@ -80,6 +80,13 @@ export class ContactFormComponent implements OnInit {
   }
   
   update() {
+  	  if (this.contactForm.invalid) {
+	  	  return;
+      }
+      
+      this.contact.name = this.contactForm.value.name;
+      this.contact.phoneNumber = this.contactForm.value.phoneNumber;
+      
   	  this.contactService.updateContact(this.contact).subscribe(
   	    data => {
   	      this.alertService.success("Contact update!", true);
